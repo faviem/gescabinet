@@ -1,0 +1,174 @@
+{% extends "BZUserBundle::layout.html.twig"%}
+
+{% block content_body %}
+    <div class="col-md-12" style="margin-top: -2.7%;">
+        <div class="panel panel-default">
+            <div class="panel-body1 ">
+                <div >
+                    <span style="font-size: 14px;text-shadow: 0px 0.5px 0.5px black;">LISTE DES AUDIENCES EN COURS DE RESOLUTION ... </span> 
+                     <a href="#" class="btn btn-xm btn-default createformulaire"  style="float: right;margin-right: 1%;font-size: 11px;"> <i class="fa fa-print"> </i><span> Imprimer </span></a>
+                </div>
+                <hr/>
+                <div class="table-responsive">
+                    <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                        <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting_desc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="font-size: 13px;text-align: center;">
+                                        N° Affaire
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="font-size: 13px;text-align: center;">
+                                        Juridiction
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="font-size: 13px;text-align: center;">
+                                        Client/Qualité
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="font-size: 13px;text-align: center;">
+                                        Partie Adverse
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="font-size: 13px;text-align: center;">
+                                        Nature
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="font-size: 13px;text-align: center;">
+                                        Avocats Adverses
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="font-size: 13px;text-align: center;">
+                                       Motif
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="font-size: 13px;text-align: center;">
+                                       Date Renvoi
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% set nbre = 0 %}
+                                   {% for element in  tacheaudiences %}
+                                    <tr class="gradeA {% if nbre%2==0 %} odd {% else %} even{% endif%}">
+                                        {% set nbre = nbre+1 %}
+                                        <td class="sorting_1" style="font-size: 12px;text-align: center;"> 
+                                            {{ element.tacheaffaire.affaire.numeroaffaire }}  
+                                           </td>
+                                        <td class="" style="font-size: 12px;text-align: center;"> 
+                                            {{ element.tacheaffaire.affaire.juridiction.libelle }} 
+                                           </td>
+                                        <td class="" style="font-size: 12px;text-align: center;"> 
+                                            <div class="dropdown">
+                                                <a href="#" title=""  data-toggle="dropdown" aria-expanded="false">
+                                                    {{ element.tacheaffaire.affaire.clientphysique.nom }}  
+                                                    <div class="ripple-wrapper"></div></a>
+                                                <ul class="dropdown-menu float-right" style="text-align: left;">
+                                                     <li style="font-size: 13px;">
+                                                           <a href="#" title="" target="_blank">
+                                                            Qualité :  {{ element.tacheaffaire.affaire.qualiteaffaire.libelle }}  
+                                                            </a>
+                                                         </li>
+                                                  </ul>
+                                            </div>
+                                           </td>
+                                        <td class="" style="font-size: 12px;text-align: center;"> 
+                                            {{ element.tacheaffaire.affaire.adversairephysique.nom }}  
+                                           </td>
+                                        <td class="" style="font-size: 12px;text-align: center;"> 
+                                            {{ element.tacheaffaire.affaire.natureaffaire.libelle }}  
+                                           </td>
+                                           
+                                         <td class="" style="font-size: 12px;text-align: center;">
+                                            <div class="dropdown">
+                                                <a href="#" title="" class="btn btn-xs btn-default " data-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fa fa-group"></i>
+                                                    <i class="fa fa-chevron-down icon_8"></i>
+                                                    <div class="ripple-wrapper"></div></a>
+                                                <ul class="dropdown-menu float-right" style="text-align: left;">
+                                                    {% set nbre = 0 %}
+                                                    {% for elt in  element.tacheaffaire.affaire.avocatadverses %}
+                                                         {% set nbre = nbre+1 %}
+                                                         <li style="font-size: 13px;">
+                                                           <a href="#" title="" target="_blank">
+                                                             {{ elt.nomPrenom }}
+                                                            </a>
+                                                         </li>
+                                                   {% endfor %}
+                                                    {% if nbre==0 %}
+                                                        <li>
+                                                        <a href="#" title="" style="color: #770000;">
+                                                            Aucun avocat de la partie adverse n'est associé à cette affaire ... !!! 
+                                                        </a>
+                                                        </li>
+                                                        {% endif  %}
+                                                  </ul>
+                                            </div>
+                                        </td>
+                                        <td class="" style="font-size: 12px;text-align: center;">
+                                             <div class="dropdown">
+                                                <a href="#" title=""  data-toggle="dropdown" aria-expanded="false">
+                                                     {{ element.motif }}
+                                                    <div class="ripple-wrapper"></div></a>
+                                                <ul class="dropdown-menu float-right" style="text-align: left;">
+                                                     <li style="font-size: 13px;">
+                                                           <a href="#" title="" target="_blank">
+                                                            Diligence : {{ element.notedestinataire }}
+                                                            </a>
+                                                         </li>
+                                                  </ul>
+                                            </div>
+                                        </td>
+                                         <td class="" style="font-size: 12px;text-align: center;"> 
+                                            <div class="dropdown">
+                                                <a href="#" title=""  data-toggle="dropdown" aria-expanded="false">
+                                                      {{ element.dateparticipee|date('d/m/Y') }}  
+                                                    <div class="ripple-wrapper"></div></a>
+                                                <ul class="dropdown-menu float-right" style="text-align: left;">
+                                                     <li style="font-size: 13px;">
+                                                           <a href="#" title="" target="_blank">
+                                                            Expéditeur : {{ element.tacheaffaire.agentdestinataire.nomPrenom }} <br/>Le :   {{ element.dateEnregistree|date('d/m/Y') }} - {{ element.dateEnregistree|date('H:i') }} 
+                                                            </a>
+                                                         </li>
+                                                  </ul>
+                                            </div>
+                                           </td>
+                                        
+                                    </tr>
+                                    {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id='afficheformulaire'>
+
+        </div>
+
+    </div>
+
+{% endblock content_body %}
+
+{% block content_tchat %}
+    
+{% endblock content_tchat  %}    
+{% block javascript %} 
+    <script>
+       
+        // Notifications();      
+        $('.createformulaire').click(function (event) {
+            var buton = $(this);
+            $('#afficheformulaire').html('');
+            $.ajax({
+                type: 'GET',
+                url: buton.attr('href'),
+                cache: false,
+                success: function (data) {
+                    $('#afficheformulaire').html(data);
+                    // $('#frm_createVille').dialog();
+                },
+                error: function () {
+                    alert('requête échouée');
+                }});
+            //we dont what the browser to submit the form
+            event.preventDefault();
+        });
+
+    </script>
+{% endblock javascript %}

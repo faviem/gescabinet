@@ -1,0 +1,17 @@
+{% extends "BZVueBundle::parent_delete.html.twig"%}
+{% block parentAction %} 
+    {{ path('delete_affaire',{'id': id})}}
+{% endblock parentAction %}
+{% block parentEnctype %}  
+
+{% endblock parentEnctype %}
+{% block parentContenu %}
+    <p>Confirmez - vous la suppression du Dossier  <br/> 
+        <span>  N° : </span> <span style="font-weight: bold;"> {{ affaire.numeroaffaire }} </span> <br/>
+        <span>  du : </span> <span style="font-weight: bold;"> {{ affaire.dateaffaire|date('d/m/Y') }} </span> 
+        <span>  Client : </span><span style="font-weight: bold;"> {{ affaire.clientphysique.nom }}  </span>
+        ?  </p> <br/>
+    <div class="alert alert-danger" role="alert" style="font-size: 12px;">
+        <strong>Attention!</strong> Toutes les audiences et affectations attachées à cette affaire seront supprimer eux aussi.
+    </div>
+{% endblock parentContenu %}

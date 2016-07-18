@@ -1,0 +1,24 @@
+create_reglementaffaire:
+    pattern:    /create_reglementaffaire/{exercice}/{id}
+    defaults: { _controller: BZControllerBundle:ReglementAffaire:create_reglementaffaire }
+    
+read_reglementaffaire:
+    pattern:    /read_reglementaffaire/{exercice}
+    defaults: { _controller: BZControllerBundle:ReglementAffaire:read_reglementaffaire }  
+    
+read_affaireregle:
+    pattern:    /read_affaireregle/{exercice}
+    defaults: { _controller: BZControllerBundle:ReglementAffaire:read_affaireregle }  
+    
+update_reglementaffaire:
+    pattern:    /update_reglementaffaire/{id}
+    defaults: { _controller: BZControllerBundle:ReglementAffaire:update_reglementaffaire }
+    requirements:
+        id: \d+
+    
+delete_reglementaffaire:
+    pattern:    /delete_reglementaffaire/{id}
+    defaults: { _controller: BZControllerBundle:ReglementAffaire:delete_reglementaffaire }
+    requirements:
+        id: \d+
+        

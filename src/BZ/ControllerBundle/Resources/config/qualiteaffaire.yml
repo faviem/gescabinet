@@ -1,0 +1,20 @@
+create_qualiteaffaire:
+    pattern:    /create_qualiteaffaire
+    defaults: { _controller: BZControllerBundle:QualiteAffaire:create_qualiteaffaire }
+    
+read_qualiteaffaire:
+    pattern:    /read_qualiteaffaire
+    defaults: { _controller: BZControllerBundle:QualiteAffaire:read_qualiteaffaire }  
+    
+update_qualiteaffaire:
+    pattern:    /update_qualiteaffaire/{id}
+    defaults: { _controller: BZControllerBundle:QualiteAffaire:update_qualiteaffaire }
+    requirements:
+        id: \d+
+    
+delete_qualiteaffaire:
+    pattern:    /delete_qualiteaffaire/{id}
+    defaults: { _controller: BZControllerBundle:QualiteAffaire:delete_qualiteaffaire }
+    requirements:
+        id: \d+
+        

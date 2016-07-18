@@ -1,0 +1,20 @@
+{% extends "BZVueBundle::parent_delete.html.twig"%}
+{% block parentAction %} 
+    {{ path('annuler_tacheaudience',{'id': id})}}
+{% endblock parentAction %}
+{% block parentEnctype %}  
+
+{% endblock parentEnctype %}
+{% block parentContenu %}
+    <p>Confirmez - vous l'annulation de l'audience : <br/> 
+        <span>Affecter par : </span><span style="font-weight: bold;"> {{  tacheaudience.agentenregistree.nomPrenom }}  </span><br/>
+        <span>  Le : </span><span style="font-weight: bold;"> {{ tacheaudience.dateEnregistree|date('d/m/Y') }} -  {{ tacheaudience.dateEnregistree|date('H:i') }} </span>
+        <span>  Date Renvoi : </span><span style="font-weight: bold;"> {{ tacheaudience.dateparticipee|date('d/m/Y')  }}  </span><br/>
+        <span>  Motif : </span><span style="font-weight: bold;"> {{ tacheaudience.motif }}  </span><br/>
+        <span>  Diligence : </span><span style="font-weight: bold;"> {{ tacheaudience.notedestinataire }}  </span><br/>
+
+        ?  </p> <br/>
+    <div class="alert alert-danger" role="alert" style="font-size: 12px;">
+        <strong>Attention !!!</strong> Toutes l'annulation provequera la reprise de ladite tâche.
+    </div>
+{% endblock parentContenu %}

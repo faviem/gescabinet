@@ -1,0 +1,22 @@
+create_chargecabinet:
+    pattern:    /create_chargecabinet/{exercice}
+    defaults: { _controller: BZControllerBundle:ChargeCabinet:create_chargecabinet }
+    requirements:
+        exercice: \d+
+    
+read_chargecabinet:
+    pattern:    /read_chargecabinet/{exercice}
+    defaults: { _controller: BZControllerBundle:ChargeCabinet:read_chargecabinet } 
+    
+update_chargecabinet:
+    pattern:    /update_chargecabinet/{id}
+    defaults: { _controller: BZControllerBundle:ChargeCabinet:update_chargecabinet }
+    requirements:
+        id: \d+
+    
+delete_chargecabinet:
+    pattern:    /delete_chargecabinet/{id}
+    defaults: { _controller: BZControllerBundle:ChargeCabinet:delete_chargecabinet }
+    requirements:
+        id: \d+
+        

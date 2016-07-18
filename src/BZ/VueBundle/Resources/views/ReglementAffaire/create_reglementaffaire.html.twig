@@ -1,0 +1,12 @@
+{% extends "BZVueBundle::parent_create.html.twig"%}
+{% block parentAction %} 
+ {{ path('create_reglementaffaire', {'exercice': exercice, 'id' : id })}}
+{% endblock parentAction %}
+   {% block parentTitre %}  OPERATION DE REGLEMENT {% endblock parentTitre %}
+{% block parentScript %}
+<script>
+     $('form').draggable();
+    $(".chzn-select").chosen();
+    $('form input.date').datepicker();
+</script>
+{% endblock parentScript %}

@@ -1,0 +1,17 @@
+{% extends "BZVueBundle::parent_create.html.twig"%}
+{% block parentAction %} 
+ {{ path('create_avocatadverse',{'id': id})}}
+{% endblock parentAction %}
+{% block parentEnctype %}  {% endblock parentEnctype %} 
+ {% block parentTitre %}  AJOUT D' AVOCAT DE LA PARTIE ADVERSE {% endblock parentTitre %}
+
+ {% block parentStyle %} style="position: relative; left: 304px; top: 90px;" {% endblock parentStyle %}
+ 
+ {% block parentScript %}
+<script>
+     $(".chzn-select").chosen();
+     $('form').draggable();
+     
+</script>
+{% endblock parentScript %}
+           

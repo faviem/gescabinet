@@ -1,0 +1,33 @@
+{% extends "BZVueBundle::parent_info.html.twig"%}
+{% block parentAction %} 
+#
+{% endblock parentAction %}
+{% block parentEnctype %}  
+   
+{% endblock parentEnctype %} 
+ {% block parentTitre %} <i class="icon icon-phone"></i> IDENTITE {% endblock parentTitre %}
+ {% block parentStyle %} style="position: relative; left: 340px; top: 80px;" {% endblock parentStyle %} 
+{% block parentContenu %}
+    <p style="font-size: 12px;">
+       <span> Nom et Prénom(s) : </span> <strong>{{ element.prenom }} {{ element.nom }}   </strong><br/><br/>
+         <span style="color: blue"> Références  </span>
+           <hr/>
+           <span> Ville de résidence : </span><strong>{{ element.ville.nomville }} </strong><br/>
+          <span> Contact(s) : </span><strong>{{ element.telmobile }}</strong><br/>
+           <span> e@mail : </span><strong> {{ element.email }}</strong><br/><br/>
+      
+        <span  style="color: blue"> Identité du compte  </span>
+        <hr/>
+           <span> Login : </span><strong>{{ element.user.username }} </strong><br/>
+           <span> Fonction : </span><strong>{{ element.fonction }} </strong><br/>
+           <span> Profil : </span><strong>{%if element.user.profil is null %} pas définie {%else %} {{ element.user.profil.libelle }}   {%endif %}</strong><br/>
+           <span> Etat du compte : </span><strong>   {% if element.user.enabled==0 %} Inactif {%else %} Actif  {%endif %}</strong><br/>
+           <span> Dernière date de connexion : </span> le <strong>  {{ element.user.lastlogin|date('d-m-Y') }}   </strong> à <strong>  {{ element.user.lastlogin|date('H:i') }}   </strong><br/>
+         
+    </p>
+{% endblock parentContenu %}
+{% block parentScript %}
+    {{ parent() }}
+<script>
+</script>
+{% endblock parentScript %}

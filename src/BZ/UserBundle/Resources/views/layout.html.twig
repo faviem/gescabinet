@@ -1,0 +1,284 @@
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>MaCav</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="keywords" content="Easy Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+              Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <!-- Bootstrap Core CSS 
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel='stylesheet' type='text/css' />-->
+        <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap/css/bootstrap.css')}}" />
+        <!-- Custom CSS -->
+        <link href="{{ asset('css/style.css') }}" rel='stylesheet' type='text/css' />
+        <!-- Graph CSS -->
+        <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet"> 
+        <!-- jQuery -->
+        <!-- lined-icons -->
+        <link rel="stylesheet" href="{{ asset('css/icon-font.min.css') }}" type='text/css' />
+        <!-- //lined-icons -->
+        <!-- chart -->
+        <script src="{{ asset('js/Chart.js') }}"></script>
+        <!-- //chart -->
+        <!--animate-->
+        <link href="{{ asset('css/animate.css') }}" rel="stylesheet" type="text/css" media="all">
+        <script src="{{ asset('js/wow.min.js') }}"></script>
+        <script>
+            //  new WOW().init();
+        </script>
+        <!--//end-animate-->
+        <!----webfonts--->
+        <link href='//fonts.googleapis.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+        <!---//webfonts---> 
+        <!-- Meters graphs 
+        <script src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>-->
+        <!-- Placed js at the end of the document so the pages load faster -->
+        <link href="{{ asset('assets/css/jquery-ui.css')}}" rel="stylesheet" />
+        <link href="{{ asset('jquery-ui-1.11.4/jquery-ui.css')}}" rel="stylesheet" />
+
+        <link rel="stylesheet" href="{{ asset('assets/plugins/chosen/chosen.min.css')}}" />
+        <link rel="stylesheet" href="{{ asset('assets/plugins/datepicker/css/datepicker.css')}}" />
+        <link rel="stylesheet" href="{{ asset('assets/plugins/switch/static/stylesheets/bootstrap-switch.css')}}" />
+        <link rel="stylesheet" href="{{ asset('assets/plugins/dataTables/dataTables.bootstrap.css')}}" />
+
+    </head> 
+
+    <body class="sticky-header left-side-collapsed">
+        <section>
+            <!-- left side start-->
+            <div class="left-side sticky-left-side">
+
+                <!--logo and iconic logo start-->
+                <div class="logo">
+                    <h1><a href="{{ path("page_accueil") }}">Ma <span>Cav</span></a></h1>
+                </div>
+                <div class="logo-icon text-center">
+                    <a href="{{ path("page_accueil") }}"><i class="fa fa-building-o"></i> </a>
+                </div>
+
+                <!--logo and iconic logo end-->
+                <div class="left-side-inner">
+
+                    <!--sidebar nav start-->
+                    <ul class="nav nav-pills nav-stacked custom-nav">
+                        <li class="menu-list">
+                            <a href="index.html"><i class="fa fa-wrench"></i>
+                                <span style="font-size: 14px;">Paramètres</span></a>
+                            <ul class="sub-menu-list">
+                                <li><a href="{{ path("read_ville") }}">Villes</a> </li>
+                                <li><a href="{{ path("read_pays") }}">Pays</a></li>
+                                <li><a href="{{ path("read_exercice") }}">Exercices</a></li>
+                                <li><a href="{{ path("read_natureaffaire") }}">Natures Affaire</a></li>
+                                <li><a href="{{ path("read_qualiteaffaire") }}">Qualites Affaire</a></li>
+                                <li><a href="{{ path("read_juridiction") }}">Juridictions</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-list">
+                            <a href="index.html"><i class="fa fa-group"></i>
+                                <span style="font-size: 14px;">Utilisateurs</span></a>
+                            <ul class="sub-menu-list">
+                                <li><a href="{{ path("read_profil") }}"> Profil des membres </a> </li>
+                                <li><a href="{{ path("read_agent") }}">Gestion des membres</a></li>
+                                <li><a href="{{ path("bz_user_connecter") }}">Répertoire des membres</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-list">
+                            <a href="#"><i class="fa fa-comments-o"></i>
+                                <span  style="font-size: 14px;">Gestion des tâches</span></a>
+                            <ul class="sub-menu-list">
+                                <li><a href="{{ path("read_dossierrecus") }}">Boîte de Dossiers</a></li>
+                                <li><a href="{{ path("read_audiencerecus", {'exercice': 2010}) }}">Boîte d'Audiences </a> </li>
+                                <li><a href="{{ path("agenda_periodique") }}">Agenda périodique</a> </li>
+                              </ul>
+                        </li>
+                        <li class="menu-list"><a href="#"><i class="fa fa-edit"></i> 
+                                <span  style="font-size: 14px;">Gestion des notes</span></a>
+                            <ul class="sub-menu-list">
+                                <li><a href="{{ path("read_categorienote") }}">Catégories de note</a> </li>
+                                <li><a href="{{ path("create_note") }}">Rédiger une note</a> </li>
+                                <li><a href="{{ path("read_repertoirenote") }}">Mes notes en cours...</a></li>
+                                <li><a href="{{ path("read_notearchivee") }}">Mes notes archivées</a></li>
+                            </ul>
+                        </li>  
+                        <li class="menu-list"><a href="#"><i class="fa fa-folder-o"></i>  
+                                <span  style="font-size: 14px;">Gestion des affaires</span></a> 
+                            <ul class="sub-menu-list">
+                                <li><a href="{{ path('create_affaire') }}">Enregistrer dossier</a> </li>
+                                <li><a href="{{ path('read_nouveauaffaire') }}">Nouveaux Dossiers </a></li>
+                                <li><a href="{{ path('read_affairetraitement') }}">Dossiers en traitements</a></li>
+                                <li><a href="{{ path('read_dossierarchive',{'exercice': 1}) }}">Dossiers archivés</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-list act"><a href="#"><i class="fa fa-book"></i>
+                                <span  style="font-size: 14px;">Comptabilité</span></a> 
+                            <ul class="sub-menu-list">
+                                <li><a href="{{ path("read_rubriquecharge") }}">Rubriques de Charge</a> </li>
+                                <li><a href="{{ path("read_previsioncharge", {'exercice': 1}) }}">Budget Prévisionnel des Charges</a> </li>
+                                <li><a href="{{ path("read_chargecabinet", {'exercice': 1}) }}">Journal des Charges</a></li>
+                                <li><a href="{{ path("read_suivibudget", {'exercice': 1}) }}">Suivi du Budget des Charges</a></li>
+                                <li><a href="{{ path("read_modereglement") }}">Modes de paiement</a></li>
+                                <li><a href="{{ path("read_reglementaffaire", {'exercice': 1}) }}">Règlement des Honoraires</a></li>
+                                <li><a href="{{ path("read_affaireregle", {'exercice': 1}) }}">Point des Affaires réglées</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!--sidebar nav end-->
+                </div>
+            </div>
+            <!-- left side end-->
+
+            <!-- main content start-->
+            <div class="main-content main-content2 main-content2copy">
+                <!-- header-starts -->
+                <div class="header-section">
+
+                    <!--toggle button start-->
+                    <a class="toggle-btn  menu-collapsed"><i class="fa fa-bars"></i></a>
+                    <!--toggle button end-->
+
+                    <!--notification menu start -->
+                    <div class="menu-right">
+                        <div class="user-panel-top">  	
+                            <div class="profile_details_left">
+                                <ul class="nofitications-dropdown">
+                                    <li class="dropdown">
+                                        <a href="{{ path('read_audienceencours') }}" class="dropdown-toggle" >
+                                            <i class="fa fa-comments-o"></i><span class="badge nbreaudience">0</span></a>
+                                     </li>
+
+                                    <li class="dropdown">
+                                        <a href="{{ path('read_tachenonresolue') }}" class="dropdown-toggle" ><i class="fa fa-folder-o"></i>
+                                            <span class="badge blue nbretache">0</span></a>
+                                       </li>	
+                                    <li class="dropdown">
+                                        <a href="{{ path("read_partagernote") }}" class="dropdown-toggle" >
+                                            <i class="fa fa-edit"></i><span class="badge blue1 nbrenotepartager">0</span></a>
+                                    </li>		   							   		
+                                    <li class="dropdown">
+                                        <a href="{{ path('voir_groupe') }}" class="dropdown-toggle" >
+                                            <i class="fa fa-user"></i><span class="badge nbreutilisateurs" style="background: #cd0a0a;">0</span></a>
+                                    </li>		   							   		
+                                    <div class="clearfix"></div>	
+                                </ul>
+                            </div>
+                            <div class="profile_details">		
+                                <ul>
+                                    <li class="dropdown profile_details_drop">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <div class="profile_img">	
+                                                <span>
+                                                  <img class="img-circle " alt="Ma photo de profil" src="{% if app.user is not null %}{% if app.user.photopersonnel is not null %} {{ asset(app.user.photopersonnel.webPath) }} {% else %} {{ asset('uploads/PhotoPersonnel/user.jpg') }} {% endif %}{% else %} {{ asset('uploads/PhotoPersonnel/user.jpg') }} {% endif %}"  style="width: 100%;height: 100%;"/>
+                                                </span> 
+                                                <div class="user-name">
+                                                    <p style="font-size: 9.5px;">{{ app.user.nomPrenom }}<span style="font-size: 9px;"> {{ app.user.profil.libelle }}</span></p>
+                                                </div>
+                                                <i class="fa fa-chevron-down"></i>
+                                                <div class="clearfix"></div>	
+                                            </div>	
+                                        </a>
+                                        <ul class="dropdown-menu drp-mnu">
+                                            <li> <a href="#"></a> </li> 
+                                            <li> <a href="{{ path('compte_agent') }}"><i class="fa fa-user"></i> Mon compte</a> </li> 
+                                            <li> <a href="#"></a> </li> 
+                                            <li> <a href="{{ path('bz_user_changepassword') }}"><i class="fa fa-lock"></i> Reinitialiser mot de passe</a> </li> 
+                                            <li> <a href="#"></a> </li> 
+                                            <li> <a href="{{ path('bz_user_deck') }}"><i class="fa fa-sign-out"></i> Se deconnecter</a> </li>
+                                        </ul>
+                                    </li>
+                                    <div class="clearfix"> </div>
+                                </ul>
+                            </div>		
+
+                        </div>
+                    </div>
+                    <!--notification menu end -->
+                </div>
+                <!-- //header-ends -->
+                <div id="page-wrapper" style="font-size: 14px;">
+
+                    {% block content_body %}
+
+                    {% endblock content_body %}
+                     {% block content_tchat %}
+                    <div class="col-md-3" id="contenudiscute">
+                        
+                    </div>
+                    <div class="col-md-3 grid_box1" style="float: right;">
+                        <form action="{{ path('envoi_sms')}}" method="post" id="chatroommesg">
+                            <input  class="form-control1" type="text" placeholder="Entrer le message ..." name="contenumesg" id="contenumesg"  />
+                       </form>
+                    </div>
+                    {% endblock content_tchat %}
+                </div>
+                <!--footer section start-->
+                <footer>
+                    <p>&copy 2016 MaCav. Mon Cabinet d'Avocat | Design by <a href="#" target="_blank"> Solution Informatique.</a></p>
+                </footer>
+                <!--footer section end-->
+        </section>
+
+        <script src="{{ asset('assets/plugins/jquery-2.0.3.min.js')}}"></script>
+        <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+        <script src="{{ asset('js/jquery.nicescroll.js') }}"></script>
+        <script src="{{ asset('js/scripts.js') }}"></script>
+
+        <script src="{{ asset('assets/plugins/dataTables/jquery.dataTables.js')}}"></script>
+        <script src="{{ asset('assets/plugins/dataTables/dataTables.bootstrap.js')}}"></script>
+
+        <script src="{{ asset('jquery-ui-1.11.4/jquery-ui.js')}}"></script>
+        <script src="{{ asset('jquery-ui-1.11.4/jquery.ui.datepicker-fr.js')}}"></script>
+        <script src="{{ asset('assets/plugins/chosen/chosen.jquery.min.js')}}" ></script>
+        <script>
+            $(document).ready(function () {
+                $('#dataTables-example').dataTable();
+                $(".chzn-select").chosen();
+              //  $('form input.date').datepicker();
+               $("#chatroommesg").submit(function (event) {
+                    var $this = $(this);
+                    $.ajax({
+                        type: $this.attr('method'),
+                        url: $this.attr('action'),
+                        cache: false,
+                        data: $this.serialize(),
+                        success: function () {
+                             $('#contenumesg').val('');
+                            notification();
+                            // location.reload();
+                        },
+                        error: function () {}
+                    });event.preventDefault();
+                });
+              function notification(){
+                 $.ajax({
+                   type: 'GET',
+                   url: "{{ path('notifications') }}",
+                   cache: false,
+                   success: function(data) {
+                       $('#contenudiscute').html(data.contenu);
+                       $('.nbrenotepartager').text(data.nbrenote);
+                       $('.nbreutilisateurs').text(data.nbreuser);
+                       $('.nbreaudience').text(data.nbreaudience);
+                       $('.nbretache').text(data.nbretache);
+                        $("#contenudiscute .scrollbar1").scrollTop( $("#contenudiscute .scrollbar1")[0].scrollHeight );
+                   },
+                   error: function() {alert('coupé');} });
+             }
+             notification();
+             //nbresms();
+             setInterval(notification, 20000);
+            });
+        </script>
+
+        {% block javascript %} 
+
+        {% endblock javascript %}
+    </body>
+</html>

@@ -1,0 +1,20 @@
+create_juridiction:
+    pattern:    /create_juridiction
+    defaults: { _controller: BZControllerBundle:Juridiction:create_juridiction }
+    
+read_juridiction:
+    pattern:    /read_juridiction
+    defaults: { _controller: BZControllerBundle:Juridiction:read_juridiction }  
+    
+update_juridiction:
+    pattern:    /update_juridiction/{id}
+    defaults: { _controller: BZControllerBundle:Juridiction:update_juridiction }
+    requirements:
+        id: \d+
+    
+delete_juridiction:
+    pattern:    /delete_juridiction/{id}
+    defaults: { _controller: BZControllerBundle:Juridiction:delete_juridiction }
+    requirements:
+        id: \d+
+        

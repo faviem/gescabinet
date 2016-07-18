@@ -1,0 +1,14 @@
+{% extends "BZVueBundle::parent_delete.html.twig"%}
+{% block parentAction %} 
+ {{ path('delete_chargecabinet',{'id': id})}}
+{% endblock parentAction %}
+{% block parentEnctype %}  
+
+{% endblock parentEnctype %}
+{% block parentContenu %}
+  
+       <p>Suppression de l'opération du : <br/> <strong> {{  element.datecharge|date('d/m/Y') }}  </strong> </p>
+       <p>Charge concernée :  <br/> <strong> {{  element.rubriquecharge.designation}}</strong> </p>
+       <p>Montant opération :  <br/> <strong> {{  element.montantcharge }}</strong> </p><br/>
+ 
+{% endblock parentContenu %}

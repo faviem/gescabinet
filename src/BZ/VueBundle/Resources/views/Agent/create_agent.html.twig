@@ -1,0 +1,11 @@
+{% extends "BZVueBundle::parent_create.html.twig"%}
+{% block parentAction %} 
+ {{ path('create_agent')}}
+{% endblock parentAction %}
+{% block parentStyle %} style="position: relative; left: 340px; top: 20px;" {% endblock parentStyle %} 
+{% block parentScript %}
+    {{ parent() }}
+<script>
+      $(".chzn-select").chosen();
+</script>
+{% endblock parentScript %}

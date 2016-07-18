@@ -1,0 +1,81 @@
+#les affaires
+create_affaire:
+    pattern:    /create_affaire
+    defaults: { _controller: BZControllerBundle:Affaire:create_affaire }
+    
+read_nouveauaffaire:
+    pattern:    /read_nouveauaffaire
+    defaults: { _controller: BZControllerBundle:Affaire:read_nouveauaffaire }  
+       
+consulter_affaire:
+    pattern:    /consulter_affaire/{id}
+    defaults: { _controller: BZControllerBundle:Affaire:consulter_affaire }
+    requirements:
+        id: \d+
+        
+dupliquer_affaire:
+    pattern:    /dupliquer_affaire/{id}
+    defaults: { _controller: BZControllerBundle:Affaire:dupliquer_affaire }
+    requirements:
+        id: \d+
+    
+update_affaire:
+    pattern:    /update_affaire/{id}
+    defaults: { _controller: BZControllerBundle:Affaire:update_affaire }
+    requirements:
+        id: \d+
+    
+delete_affaire:
+    pattern:    /delete_affaire/{id}
+    defaults: { _controller: BZControllerBundle:Affaire:delete_affaire }
+    requirements:
+        id: \d+
+        
+archiver_affaire:
+    pattern:    /archiver_affaire/{id}
+    defaults: { _controller: BZControllerBundle:Affaire:archiver_affaire }
+    requirements:
+        id: \d+
+        
+delete_archiveaffaire:
+    pattern:    /delete_archiveaffaire/{id}
+    defaults: { _controller: BZControllerBundle:Affaire:delete_archiveaffaire }
+    requirements:
+        id: \d+
+        
+read_dossierarchive:
+    pattern:    /read_dossierarchive/{exercice}
+    defaults: { _controller: BZControllerBundle:Affaire:read_dossierarchive }  
+    
+#les taches affaire        
+affecter_affaire:
+    pattern:    /affecter_affaire/{id}
+    defaults: { _controller: BZControllerBundle:Affaire:affecter_affaire }
+    requirements:
+        id: \d+
+        
+delete_tacheaffaire:
+    pattern:    /delete_tacheaffaire/{id}
+    defaults: { _controller: BZControllerBundle:Affaire:delete_tacheaffaire }
+    requirements:
+        id: \d+
+        
+consulter_tacheaffaire:
+    pattern:    /consulter_tacheaffaire/{id}
+    defaults: { _controller: BZControllerBundle:Affaire:consulter_tacheaffaire }
+    requirements:
+        id: \d+
+        
+consulter_tacheaffaireautre:
+    pattern:    /consulter_tacheaffaireautre/{id}/{exercice}
+    defaults: { _controller: BZControllerBundle:Affaire:consulter_tacheaffaireautre }
+    requirements:
+        id: \d+
+
+read_affairetraitement:
+    pattern:    /read_affairetraitement
+    defaults: { _controller: BZControllerBundle:Affaire:read_affairetraitement }  
+ 
+       
+
+        

@@ -1,0 +1,14 @@
+{% extends "BZVueBundle::parent_delete.html.twig"%}
+{% block parentAction %} 
+ {{ path('delete_reglementaffaire',{'id': id})}}
+{% endblock parentAction %}
+{% block parentEnctype %}  
+
+{% endblock parentEnctype %}
+{% block parentContenu %}
+    
+       <p>Suppression du reglèment du : <br/> <strong>{{  element.datereglement |date('d/m/Y') }}  </strong> </p>
+       <p>Montant réglé :   <strong> {{  element.montantregelement }}  </strong> N° Affaire :  <strong> {{  element.affaire.numeroaffaire }}   </strong> </p>
+       <br/>
+    
+{% endblock parentContenu %}

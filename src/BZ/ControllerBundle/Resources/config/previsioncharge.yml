@@ -1,0 +1,20 @@
+read_previsioncharge:
+    pattern:    /read_previsioncharge/{exercice}
+    defaults: { _controller: BZControllerBundle:PrevisionCharge:read_previsioncharge } 
+    
+read_suivibudget:
+    pattern:    /read_suivibudget/{exercice}
+    defaults: { _controller: BZControllerBundle:PrevisionCharge:read_suivibudget } 
+    
+update_previsioncharge:
+    pattern:    /update_previsioncharge/{id}/{exercice}
+    defaults: { _controller: BZControllerBundle:PrevisionCharge:update_previsioncharge }
+    requirements:
+        id: \d+
+    
+delete_previsioncharge:
+    pattern:    /delete_previsioncharge/{id}/{exercice}
+    defaults: { _controller: BZControllerBundle:PrevisionCharge:delete_previsioncharge }
+    requirements:
+        id: \d+
+        

@@ -1,0 +1,20 @@
+create_categorienote:
+    pattern:    /create_categorienote
+    defaults: { _controller: BZControllerBundle:CategorieNote:create_categorienote }
+    
+read_categorienote:
+    pattern:    /read_categorienote
+    defaults: { _controller: BZControllerBundle:CategorieNote:read_categorienote }  
+    
+update_categorienote:
+    pattern:    /update_categorienote/{id}
+    defaults: { _controller: BZControllerBundle:CategorieNote:update_categorienote }
+    requirements:
+        id: \d+
+    
+delete_categorienote:
+    pattern:    /delete_categorienote/{id}
+    defaults: { _controller: BZControllerBundle:CategorieNote:delete_categorienote }
+    requirements:
+        id: \d+
+        

@@ -1,0 +1,20 @@
+create_pays:
+    pattern:    /create_pays
+    defaults: { _controller: BZControllerBundle:Pays:create_pays }
+    
+read_pays:
+    pattern:    /read_pays
+    defaults: { _controller: BZControllerBundle:Pays:read_pays }  
+    
+update_pays:
+    pattern:    /update_pays/{id}
+    defaults: { _controller: BZControllerBundle:Pays:update_pays }
+    requirements:
+        id: \d+
+    
+delete_pays:
+    pattern:    /delete_pays/{id}
+    defaults: { _controller: BZControllerBundle:Pays:delete_pays }
+    requirements:
+        id: \d+
+        

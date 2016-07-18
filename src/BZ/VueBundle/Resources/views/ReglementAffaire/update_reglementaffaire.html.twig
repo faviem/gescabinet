@@ -1,0 +1,11 @@
+{% extends "BZVueBundle::parent_update.html.twig"%}
+{% block parentAction %} 
+ {{ path('update_reglementaffaire',{'id': id})}}
+{% endblock parentAction %}
+{% block parentScript %}
+<script>
+     $('form').draggable();
+    $(".chzn-select").chosen();
+    $('form input.date').datepicker();
+</script>
+{% endblock parentScript %}

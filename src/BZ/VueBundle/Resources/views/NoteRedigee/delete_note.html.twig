@@ -1,0 +1,12 @@
+{% extends "BZVueBundle::parent_delete.html.twig"%}
+{% block parentAction %} 
+ {{ path('delete_note',{'id': id})}}
+{% endblock parentAction %}
+{% block parentEnctype %}  
+
+{% endblock parentEnctype %}
+{% block parentContenu %}
+           <p>Confirmez - vous la suppression de la note <br/> 
+               <span>   du : </span> <span style="font-weight: bold;"> {{ noteredigee.datepersist|date('d/m/Y') }} - {{ noteredigee.datepersist|date('H:i') }} </span> <span>   Catégorie : </span><span style="font-weight: bold;"> {{ noteredigee.categorienote.libelle }}  </span>
+                      ?</p>
+            {% endblock parentContenu %}

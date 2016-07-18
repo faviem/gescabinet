@@ -1,0 +1,10 @@
+{% extends "BZVueBundle::parent_update.html.twig"%}
+{% block parentAction %} 
+ {{ path('update_chargecabinet',{'id': id})}}
+{% endblock parentAction %}
+{% block parentScript %}
+    {{ parent() }}
+<script>
+      $(".chzn-select").chosen();
+</script>
+{% endblock parentScript %}

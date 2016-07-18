@@ -1,0 +1,85 @@
+{% extends "BZVueBundle::parent_info.html.twig"%}
+{% block parentAction %} 
+ #
+{% endblock parentAction %}
+{% block parentEnctype %}  {% endblock parentEnctype %} 
+ {% block parentTitre %}  CONSULTATION D'UN DOSSIER {% endblock parentTitre %}
+ {% block parentStyle %} style="position: relative; left: 304px; top: 90px;" {% endblock parentStyle %}
+ {% block parentContenu %}
+     <p style="font-size: 13px;">
+         <span>  Dossier N° : </span> <span style="font-weight: bold;"> {{ affaire.numeroaffaire }} </span> <br/>
+         <span>  du : </span> <span style="font-weight: bold;"> {{ affaire.dateaffaire|date('d/m/Y') }} </span> <br/>
+         <span>  Client : </span><span style="font-weight: bold;"> {{ affaire.clientphysique.nom }}  </span><br/>
+         <span>  Contact(s) Client : </span><span style="font-weight: bold;"> {{ affaire.clientphysique.telmobile }}  </span><br/>
+         <span>  Qualité : </span><span style="font-weight: bold;"> {{ affaire.qualiteaffaire.libelle }}  </span><br/>
+         <span>  Nature : </span><span style="font-weight: bold;"> {{ affaire.natureaffaire.libelle }}  </span><br/>
+         <span>  Juridiction : </span><span style="font-weight: bold;"> {{ affaire.juridiction.libelle }}  </span><br/>
+         <span>  Partie Adverse : </span><span style="font-weight: bold;"> {{ affaire.adversairephysique.nom }}  </span><br/>
+         <span>  Contact(s) Partie Adverse : </span><span style="font-weight: bold;"> {{ affaire.adversairephysique.telmobile }}  </span><br/>
+         <span>  Coût de l'affaire : </span><span style="font-weight: bold;font-size: 11px;"> {{ affaire.coutaffaire }}  </span> francs CFA<br/>
+         <span>  Coût restant à payer : </span><span style="font-weight: bold;font-size: 11px;"> {{ affaire.coutrestant }}  </span> francs CFA<br/>
+         <span>  Objet du litige: </span><br/><p style="font-weight: bold;margin-left: 2%;font-size: 11px;"> {{ affaire.objet }}  </p>
+         <br/>
+         <span>   Pièce(s) jointe(s) </span>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr style="font-size: 11px;">
+                                        <th style="text-align: center;">Nom du fichier</th>
+                                        <th style="text-align: center;">Date enregistrement</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% set nbre = 0 %}
+                                    {% for element in  affaire.pieceaffaires %}
+                                        {% set nbre = nbre+1 %}
+                                        <tr  style="font-size: 11px;">
+                                           <td><a href="{{ asset( element.dowloadPath) }}" title="" target="_blank">{{ element.alt }}  </a></td>
+                                            <td  style="text-align: center;">{{ element.dateEnregistrement |date('d/m/Y') }} - {{ element.dateEnregistrement |date('H:i') }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    {% if nbre==0 %}
+                                        <tr>
+                                            <td colspan="3" style="font-size: 10px;color: #770000;text-align: center;">Aucun fichier n'est encore joint à la présente note ... !!!</td>
+                                        </tr>
+                                    {% endif  %}
+                                </tbody>
+                            </table>
+                        </div>
+     <span> Avocats de la partie adverse </span>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr style="font-size: 11px;">
+                                    <th style="text-align: center;">Avocat</th>
+                                    <th style="text-align: center;">Contact(s)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% set nbre = 0 %}
+                                {% for element in  affaire.avocatadverses %}
+                                    {% set nbre = nbre+1 %}
+                                    <tr  style="font-size: 11px;">
+                                         <td>{{ element.nomPrenom }}</td>
+                                         <td>{{ element.telmobile }}</td>
+                                    </tr>
+                                {% endfor %}
+                                {% if nbre==0 %}
+                                    <tr>
+                                        <td colspan="3" style="font-size: 10px;color: #770000;text-align: center;">Aucun avocat de la partie adverse n'est encore enregistré... !!!</td>
+                                    </tr>
+                                {% endif  %}
+                            </tbody>
+                        </table>
+                    </div>
+     </p>                    
+ {% endblock parentContenu %}
+ {% block parentScript %}
+<script>
+     $(".chzn-select").chosen();
+     $('form').draggable();
+     
+</script>
+{% endblock parentScript %}
+           

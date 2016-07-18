@@ -1,0 +1,15 @@
+{% extends "BZVueBundle::parent_delete.html.twig"%}
+{% block parentAction %} 
+ {{ path('delete_previsioncharge',{'id': id, 'exercice': exercice})}}
+{% endblock parentAction %}
+{% block parentEnctype %}  
+
+{% endblock parentEnctype %}
+{% block parentContenu %}
+    {% if element == null %}
+        <p>Aucune prévision n'est enregistrée pour cette charge <br/> <strong> </strong> </p>
+    {% else %}
+       <p>Annulation de la prévision de : <br/> <strong> {{ element.rubriquecharge.designation }} </strong> </p>
+       <p>Coût prévisionnel :  <br/> <strong> {{ element.coutprevu }} </strong> </p><br/>
+    {% endif %}
+{% endblock parentContenu %}

@@ -1,0 +1,48 @@
+create_note:
+    pattern:    /create_note
+    defaults: { _controller: BZControllerBundle:Note:create_note }
+    
+read_repertoirenote:
+    pattern:    /read_repertoirenote
+    defaults: { _controller: BZControllerBundle:Note:read_repertoirenote }  
+
+read_notearchivee:
+    pattern:    /read_notearchivee
+    defaults: { _controller: BZControllerBundle:Note:read_notearchivee }  
+    
+update_note:
+    pattern:    /update_note/{id}
+    defaults: { _controller: BZControllerBundle:Note:update_note }
+    requirements:
+        id: \d+
+    
+delete_note:
+    pattern:    /delete_note/{id}
+    defaults: { _controller: BZControllerBundle:Note:delete_note }
+    requirements:
+        id: \d+
+        
+archiver_note:
+    pattern:    /archiver_note/{id}
+    defaults: { _controller: BZControllerBundle:Note:archiver_note }
+    requirements:
+        id: \d+
+        
+publier_note:
+    pattern:    /publier_note/{id}
+    defaults: { _controller: BZControllerBundle:Note:publier_note }
+    requirements:
+        id: \d+
+        
+depublier_note:
+    pattern:    /depublier_note/{id}
+    defaults: { _controller: BZControllerBundle:Note:depublier_note }
+    requirements:
+        id: \d+
+        
+consulter_note:
+    pattern:    /depublier_note/{id}
+    defaults: { _controller: BZControllerBundle:Note:depublier_note }
+    requirements:
+        id: \d+
+        

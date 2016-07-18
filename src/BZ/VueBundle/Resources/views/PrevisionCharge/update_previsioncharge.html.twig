@@ -1,0 +1,8 @@
+{% extends "BZVueBundle::parent_update.html.twig"%}
+{% block parentAction %} 
+ {{ path('update_previsioncharge',{'id': id, 'exercice': exercice })}}
+{% endblock parentAction %}
+{% block parentContenu %}
+       <p>Prévision du Charge : <br/> <strong> {{ rubrique.designation }} </strong> </p><br/>
+     {{ parent() }}
+{% endblock parentContenu %}

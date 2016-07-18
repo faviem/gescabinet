@@ -1,0 +1,12 @@
+ajouter_piecenote:
+    pattern:    /ajouter_piecenote/{id}
+    defaults: { _controller: BZControllerBundle:PieceNote:ajouter_piecenote }
+    requirements:
+        id: \d+
+      
+delete_piecenote:
+    pattern:    /delete_piecenote/{id}
+    defaults: { _controller: BZControllerBundle:PieceNote:delete_piecenote }
+    requirements:
+        id: \d+
+        

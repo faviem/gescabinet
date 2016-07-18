@@ -1,0 +1,55 @@
+{% extends "BZUserBundle::layout.html.twig"%}
+
+{% block content_body %}
+    <form  class="ui-draggable"  action="{{ path('create_affaire') }}" method="post" {{ form_enctype(formaffaire) }} >
+        <div class="col-lg-6" style="margin-top: -2.7%;margin-left: 12.5%;">
+            <div class="panel panel-default">
+
+                <div class="panel-body1">
+                    <span style="text-shadow: 0px 0.5px 0.5px black;font-size: 15px;color: black;">
+                        ENREGISTREMENT D'UN DOSSIER  (1/2)
+                    </span>
+
+                    <hr/>
+                   
+                    <div class="but_list">
+            <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                <ul id="myTab" class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="false">Identité du dossier</a></li>
+                    <li role="presentation" class=""><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="true">Client</a></li>
+                    <li role="presentation" class=""><a href="#profile1" role="tab" id="profile-tab1" data-toggle="tab" aria-controls="profile1" aria-expanded="true">Partie Adverse</a></li>
+                 
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade  active in" id="home" aria-labelledby="home-tab">
+                        <p>
+                             {{ form_widget(formaffaire) }}
+                        </p>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
+                        <p>
+                            {{ form_widget(formclient) }}
+                            </p>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="profile1" aria-labelledby="profile-tab1">
+                        <p>
+                             {{ form_widget(formadverse) }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+                    
+                </div>
+                <div class="panel-footer">
+                    <a type="button" class="btn btn-default btn-xm " href="{{ path('page_accueil')}}" id="retour" style="font-size: 11px;"><i class="fa fa-arrow-left"> </i> Retour</a>
+                    <button type="submit" class="btn btn-default btn-xm " style="background: rgb(70, 136, 71);color: white;font-size: 11px;" ><i class="fa fa-save"> </i> Enregistrer</button>
+                    <span class='tachat_img hide'><img src="{{ asset('/images/712.GIF') }}" alt="Second slide" class='img-circle' style="height: 20px;width: 20px;"> Enregistrement ...</span>
+                </div>
+            </div>
+        </div>
+        {{ form_rest(formaffaire) }}
+
+        
+    </form>
+{% endblock content_body %}

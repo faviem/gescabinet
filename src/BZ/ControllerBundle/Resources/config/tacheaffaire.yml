@@ -1,0 +1,56 @@
+read_dossierrecus:
+    pattern:    /read_dossierrecus
+    defaults: { _controller: BZControllerBundle:TacheAffaire:read_dossierrecus }  
+    
+read_tachenonresolue:
+    pattern:    /read_tachenonresolue
+    defaults: { _controller: BZControllerBundle:TacheAffaire:read_tachenonresolue }  
+
+suivre_tacheaffaire:
+    pattern:    /suivre_tacheaffaire/{id}
+    defaults: { _controller: BZControllerBundle:TacheAffaire:suivre_tacheaffaire }
+    requirements:
+        id: \d+
+        
+cloturer_tacheaffaire:
+    pattern:    /cloturer_tacheaffaire/{id}
+    defaults: { _controller: BZControllerBundle:TacheAffaire:cloturer_tacheaffaire }
+    requirements:
+        id: \d+
+        
+ajouter_audience:
+    pattern:    /ajouter_audience/{id}
+    defaults: { _controller: BZControllerBundle:TacheAffaire:ajouter_audience }
+    requirements:
+        id: \d+
+        
+remove_audience:
+    pattern:    /remove_audience/{id}
+    defaults: { _controller: BZControllerBundle:TacheAffaire:remove_audience }
+    requirements:
+        id: \d+
+        
+read_audiencerecus:
+    pattern:    /read_audiencerecus/{exercice}
+    defaults: { _controller: BZControllerBundle:TacheAffaire:read_audiencerecus }
+    
+read_audienceencours:
+    pattern:    /read_audienceencours
+    defaults: { _controller: BZControllerBundle:TacheAffaire:read_audienceencours }
+
+agenda_periodique:
+    pattern:    /agenda_periodique
+    defaults: { _controller: BZControllerBundle:TacheAffaire:agenda_periodique }
+    
+ajouter_tacheaudience:
+    pattern:    /ajouter_tacheaudience/{id}
+    defaults: { _controller: BZControllerBundle:TacheAffaire:ajouter_tacheaudience }
+    requirements:
+        id: \d+
+        
+annuler_tacheaudience:
+    pattern:    /annuler_tacheaudience/{id}
+    defaults: { _controller: BZControllerBundle:TacheAffaire:annuler_tacheaudience }
+    requirements:
+        id: \d+
+        

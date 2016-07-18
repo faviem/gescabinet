@@ -1,0 +1,26 @@
+{% extends "BZVueBundle::parent_delete.html.twig"%}
+{% block parentAction %} 
+    {{ path('delete_tacheaffaire',{'id': id})}}
+{% endblock parentAction %}
+{% block parentEnctype %}  
+
+{% endblock parentEnctype %}
+{% block parentContenu %}
+    <p style="font-size: 13px;">Confirmez - vous la suppression du traitement du Dossier  <br/> 
+        <span>  N° : </span> <span style="font-weight: bold;"> {{ affaire.numeroaffaire }} </span> <br/>
+        <span>  du : </span> <span style="font-weight: bold;"> {{ affaire.dateaffaire|date('d/m/Y') }} </span> 
+        <span>  Client : </span><span style="font-weight: bold;"> {{ affaire.clientphysique.nom }}  </span><br/>
+        <span>  Affecter à  : </span><span style="font-weight: bold;">  {{ tacheaffaire.agentdestinataire.nomPrenom }} </span><br/>
+        <span>  Le : </span><span style="font-weight: bold;"> {{ tacheaffaire.dateassignee|date('d/m/Y') }} </span>
+        <span>  Etat du traitement : </span><span style="font-weight: bold;"> 
+            {%if tacheaffaire.estresolue== 0 %}
+                Non résolu
+            {% else  %}
+                Résolu
+            {% endif %}
+        </span>
+        ?  </p> <br/>
+    <div class="alert alert-danger" role="alert" style="font-size: 12px;">
+        <strong>Attention!</strong> Toutes les audiences attachées à ce traitement seront supprimer eux aussi.
+    </div>
+{% endblock parentContenu %}

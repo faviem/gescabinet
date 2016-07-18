@@ -1,0 +1,24 @@
+{% extends "BZVueBundle::parent_create.html.twig"%}
+{% block parentAction %} 
+ {{ path('create_partagernote',{'id': id})}}
+{% endblock parentAction %}
+{% block parentEnctype %}  {% endblock parentEnctype %} 
+ {% block parentTitre %}  PARTAGE DE LA NOTE {% endblock parentTitre %}
+{% block parentContenu %}
+    <label for="bz_membre">Partager la note avec : </label>
+    <select id="bz_membre" name="bz_membre[]" required="required" multiple="true" class="form-control chzn-select" style="display: block;">
+              {% for element in  membres %}
+                     {% if element.user.id != app.user.id %}
+                         <option value="{{ element.id }}">{{ element.nomPrenom }}</option>
+                     {% endif %}
+                {% endfor %}
+           </select>
+ {% endblock parentContenu %}
+ {% block parentScript %}
+<script>
+     $(".chzn-select").chosen();
+     $('form').draggable();
+     
+</script>
+{% endblock parentScript %}
+           

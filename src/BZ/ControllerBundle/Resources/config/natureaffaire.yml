@@ -1,0 +1,20 @@
+create_natureaffaire:
+    pattern:    /create_natureaffaire
+    defaults: { _controller: BZControllerBundle:NatureAffaire:create_natureaffaire }
+    
+read_natureaffaire:
+    pattern:    /read_natureaffaire
+    defaults: { _controller: BZControllerBundle:NatureAffaire:read_natureaffaire }  
+    
+update_natureaffaire:
+    pattern:    /update_natureaffaire/{id}
+    defaults: { _controller: BZControllerBundle:NatureAffaire:update_natureaffaire }
+    requirements:
+        id: \d+
+    
+delete_natureaffaire:
+    pattern:    /delete_natureaffaire/{id}
+    defaults: { _controller: BZControllerBundle:NatureAffaire:delete_natureaffaire }
+    requirements:
+        id: \d+
+        

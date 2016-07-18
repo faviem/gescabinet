@@ -1,0 +1,20 @@
+create_modereglement:
+    pattern:    /create_modereglement
+    defaults: { _controller: BZControllerBundle:ModeReglement:create_modereglement }
+    
+read_modereglement:
+    pattern:    /read_modereglement
+    defaults: { _controller: BZControllerBundle:ModeReglement:read_modereglement }  
+    
+update_modereglement:
+    pattern:    /update_modereglement/{id}
+    defaults: { _controller: BZControllerBundle:ModeReglement:update_modereglement }
+    requirements:
+        id: \d+
+    
+delete_modereglement:
+    pattern:    /delete_modereglement/{id}
+    defaults: { _controller: BZControllerBundle:ModeReglement:delete_modereglement }
+    requirements:
+        id: \d+
+        

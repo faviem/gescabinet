@@ -1,0 +1,12 @@
+ajouter_pieceaffaire:
+    pattern:    /ajouter_pieceaffaire/{id}
+    defaults: { _controller: BZControllerBundle:PieceAffaire:ajouter_pieceaffaire }
+    requirements:
+        id: \d+
+      
+delete_pieceaffaire:
+    pattern:    /delete_pieceaffaire/{id}
+    defaults: { _controller: BZControllerBundle:PieceAffaire:delete_pieceaffaire }
+    requirements:
+        id: \d+
+        

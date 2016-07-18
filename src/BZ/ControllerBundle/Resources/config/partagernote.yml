@@ -1,0 +1,16 @@
+read_partagernote:
+    pattern:    /read_partagernote
+    defaults: { _controller: BZControllerBundle:PartagerNote:read_partagernote }  
+
+create_partagernote:
+    pattern:    /create_partagernote/{id}
+    defaults: { _controller: BZControllerBundle:PartagerNote:create_partagernote }
+    requirements:
+        id: \d+
+
+delete_partagernote:
+    pattern:    /delete_partagernote/{id}
+    defaults: { _controller: BZControllerBundle:PartagerNote:delete_partagernote }
+    requirements:
+        id: \d+
+        

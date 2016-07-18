@@ -1,0 +1,44 @@
+<div class="activity_box activity_box1" >
+<h3>CHATROOM</h3>
+<div class="scrollbar scrollbar1" id="style-2">
+    {% set nbre=0 %}
+   {% for element in  discussions %}
+          {% set nbre=nbre+1 %}
+    <div class="activity-row">
+        <div class="col-xs-3 activity-img"><img src="{% if element.agent.user.photopersonnel is not null %} {{ asset(element.agent.user.photopersonnel.webPath) }} {% else %} {{ asset('uploads/PhotoPersonnel/user.jpg') }} {% endif %}" class="img-responsive img-circle" alt=""></div>
+        <div class="col-xs-7 activity-desc">
+            <h5><a href="#">
+            
+            <div class="dropdown">
+                <a href="#" title="" data-toggle="dropdown" aria-expanded="false">
+                   {{ element.agent.nomPrenom }}
+                    <div class="ripple-wrapper"></div></a>
+                <ul class="dropdown-menu float-right" style="text-align: left;">
+                    <li>
+                        <a href="#" title="" style="display: block;">
+                            {{ element.agent.telmobile }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            </a></h5>
+            <p>{{ element.message }} </p>
+        </div>
+        <div class="col-xs-2 activity-desc1"><h6>{{ element.datepersist|date('d/m/Y') }}  {{ element.datepersist|date('H:i') }} </h6></div>
+        <div class="clearfix"> </div>
+    </div>
+      {% endfor %}
+</div>
+
+   {% if  nbre == 0 %}
+       <div class="scrollbar scrollbar1" id="style-2">
+    <div class="activity-row">
+        <div class="col-xs-7 activity-desc">
+            <h5><a href="#"></a></h5>
+            <p style="color: red;">Aucune discussion n'est en cours ... !!! </p>
+        </div>
+    </div>
+
+</div>
+   {% endif  %}
+   </div>

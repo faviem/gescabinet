@@ -1,0 +1,78 @@
+
+bz_ville:
+    resource: "@BZControllerBundle/Resources/config/ville.yml"
+    prefix:   /
+bz_pays:
+    resource: "@BZControllerBundle/Resources/config/pays.yml"
+    prefix:   /
+bz_natureaffaire:
+    resource: "@BZControllerBundle/Resources/config/natureaffaire.yml"
+    prefix:   /
+bz_qualiteaffaire:
+    resource: "@BZControllerBundle/Resources/config/qualiteaffaire.yml"
+    prefix:   /
+bz_exercice:
+    resource: "@BZControllerBundle/Resources/config/exercice.yml"
+    prefix:   /
+bz_juridiction:
+    resource: "@BZControllerBundle/Resources/config/juridiction.yml"
+    prefix:   /
+bz_rubriquecharge:
+    resource: "@BZControllerBundle/Resources/config/rubriquecharge.yml"
+    prefix:   /
+bz_modereglement:
+    resource: "@BZControllerBundle/Resources/config/modereglement.yml"
+    prefix:   /
+bz_categorienote:
+    resource: "@BZControllerBundle/Resources/config/categorienote.yml"
+    prefix:   /
+bz_note:
+    resource: "@BZControllerBundle/Resources/config/note.yml"
+    prefix:   /
+bz_partagernote:
+    resource: "@BZControllerBundle/Resources/config/partagernote.yml"
+    prefix:   /
+bz_piecenote:
+    resource: "@BZControllerBundle/Resources/config/piecenote.yml"
+    prefix:   /
+bz_chargecabinet:
+    resource: "@BZControllerBundle/Resources/config/chargecabinet.yml"
+    prefix:   /
+bz_previsioncharge:
+    resource: "@BZControllerBundle/Resources/config/previsioncharge.yml"
+    prefix:   /
+bz_profil:
+    resource: "@BZControllerBundle/Resources/config/profil.yml"
+    prefix:   /
+bz_agent:
+    resource: "@BZControllerBundle/Resources/config/agent.yml"
+    prefix:   /
+bz_tacheaffaire:
+    resource: "@BZControllerBundle/Resources/config/tacheaffaire.yml"
+    prefix:   /
+bz_affaire:
+    resource: "@BZControllerBundle/Resources/config/affaire.yml"
+    prefix:   /
+bz_pieceaffaire:
+    resource: "@BZControllerBundle/Resources/config/pieceaffaire.yml"
+    prefix:   /
+bz_avocatadverse:
+    resource: "@BZControllerBundle/Resources/config/avocatadverse.yml"
+    prefix:   /
+bz_reglementaffaire:
+    resource: "@BZControllerBundle/Resources/config/reglementaffaire.yml"
+    prefix:   /
+bz_tacheaffaire:
+    resource: "@BZControllerBundle/Resources/config/tacheaffaire.yml"
+    prefix:   /
+bz_pieceaudience:
+    resource: "@BZControllerBundle/Resources/config/pieceaudience.yml"
+    prefix:   /
+
+notifications:
+    pattern:    /notifications
+    defaults: { _controller: BZControllerBundle:Default:notifications}
+    
+envoi_sms:
+    pattern:    /envoi_sms
+    defaults: { _controller: BZControllerBundle:Default:envoi_sms}

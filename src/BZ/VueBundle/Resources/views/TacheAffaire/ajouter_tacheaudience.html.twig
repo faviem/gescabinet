@@ -1,0 +1,43 @@
+{% extends "BZUserBundle::layout.html.twig"%}
+
+{% block content_body %}
+    <form  class="ui-draggable"  action="{{ path('ajouter_tacheaudience', {'id': id}) }}" method="post" {{ form_enctype(form) }} >
+        <div class="col-md-7" style="margin-top: -2.7%;margin-left: 16.6%;">
+            <div class="panel panel-default">
+
+                <div class="panel-body1">
+                    <span style="text-shadow: 0px 0.5px 0.5px black;font-size: 15px;color: black;">
+                        ENREGISTREMENT DE L'AUDIENCE  (1/2)
+                    </span>
+                    <a type="button" class="btn btn-default btn-xm " href="{{ path('agenda_periodique') }}" id="retour" style="font-size: 11px;float: right;"> <i class="fa  fa-arrow-left"> </i> Retour</a>
+                    <hr/>
+                    <div>
+                        <p>
+                            <span>  Dossier N° : </span> <span style="font-weight: bold;"> {{ tacheaudience.tacheaffaire.affaire.numeroaffaire }} </span> <br/>
+                            <span>  du : </span> <span style="font-weight: bold;"> {{  tacheaudience.tacheaffaire.affaire.dateaffaire|date('d/m/Y') }} </span> <br/>
+                            <span>  Client : </span><span style="font-weight: bold;"> {{  tacheaudience.tacheaffaire.affaire.clientphysique.nom }}  </span>
+                            <span>  Qualité : </span><span style="font-weight: bold;"> {{  tacheaudience.tacheaffaire.affaire.qualiteaffaire.libelle }}  </span><br/>
+                            <span>  Nature Affaire : </span><span style="font-weight: bold;"> {{  tacheaudience.tacheaffaire.affaire.natureaffaire.libelle }}  </span> - 
+                            <span>  Juridiction : </span><span style="font-weight: bold;"> {{  tacheaudience.tacheaffaire.affaire.juridiction.libelle }}  </span><br/>
+                            <span>  Partie Adverse : </span><span style="font-weight: bold;"> {{  tacheaudience.tacheaffaire.affaire.adversairephysique.nom }}  </span><br/>
+                            
+                            <span>  Audience  Affecter par : </span><span style="font-weight: bold;"> {{  tacheaudience.agentenregistree.nomPrenom }}  </span><br/>
+                            <span>  Le : </span><span style="font-weight: bold;"> {{ tacheaudience.dateEnregistree|date('d/m/Y') }} -  {{ tacheaudience.dateEnregistree|date('H:i') }} </span>
+                            <span>  Date Renvoi : </span><span style="font-weight: bold;"> {{ tacheaudience.dateparticipee|date('d/m/Y')  }}  </span><br/>
+                            <span>  Motif : </span><span style="font-weight: bold;"> {{ tacheaudience.motif }}  </span><br/>
+                            <span>  Diligence : </span><span style="font-weight: bold;"> {{ tacheaudience.notedestinataire }}  </span><br/>
+                           <br/>
+                              </p>
+                           
+                    </div>
+
+                    {{ form_widget(form) }}
+                    <br/>
+                    <button type="submit" class="btn btn-default btn-xm " style="font-size: 11px;" ><i class="fa fa-save"> </i> Enregistrer</button>
+                    <br/>
+                </div>
+            </div>
+        </div>
+        {{ form_rest(form) }}
+    </form>
+{% endblock content_body %}

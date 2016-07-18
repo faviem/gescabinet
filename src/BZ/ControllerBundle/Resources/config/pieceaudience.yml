@@ -1,0 +1,12 @@
+ajouter_pieceaudience:
+    pattern:    /ajouter_pieceaudience/{id}
+    defaults: { _controller: BZControllerBundle:PieceAudience:ajouter_pieceaudience }
+    requirements:
+        id: \d+
+      
+delete_pieceaudience:
+    pattern:    /delete_pieceaudience/{id}
+    defaults: { _controller: BZControllerBundle:PieceAudience:delete_pieceaudience }
+    requirements:
+        id: \d+
+        

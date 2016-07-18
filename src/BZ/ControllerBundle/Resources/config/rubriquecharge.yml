@@ -1,0 +1,20 @@
+create_rubriquecharge:
+    pattern:    /create_rubriquecharge
+    defaults: { _controller: BZControllerBundle:RubriqueCharge:create_rubriquecharge }
+    
+read_rubriquecharge:
+    pattern:    /read_rubriquecharge
+    defaults: { _controller: BZControllerBundle:RubriqueCharge:read_rubriquecharge }  
+    
+update_rubriquecharge:
+    pattern:    /update_rubriquecharge/{id}
+    defaults: { _controller: BZControllerBundle:RubriqueCharge:update_rubriquecharge }
+    requirements:
+        id: \d+
+    
+delete_rubriquecharge:
+    pattern:    /delete_rubriquecharge/{id}
+    defaults: { _controller: BZControllerBundle:RubriqueCharge:delete_rubriquecharge }
+    requirements:
+        id: \d+
+        

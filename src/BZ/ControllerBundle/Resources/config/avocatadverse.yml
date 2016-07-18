@@ -1,0 +1,12 @@
+create_avocatadverse:
+    pattern:    /create_avocatadverse/{id}
+    defaults: { _controller: BZControllerBundle:AvocatAdverse:create_avocatadverse }
+    requirements:
+        id: \d+
+
+delete_avocatadverse:
+    pattern:    /delete_avocatadverse/{id}
+    defaults: { _controller: BZControllerBundle:AvocatAdverse:delete_avocatadverse }
+    requirements:
+        id: \d+
+        

@@ -1,0 +1,22 @@
+{% extends "BZVueBundle::parent_delete.html.twig"%}
+{% block parentAction %} 
+    {{ path('delete_archiveaffaire',{'id': id})}}
+{% endblock parentAction %}
+{% block parentEnctype %}  
+{% endblock parentEnctype %}
+   {% block parentTitre %} <i class="fa fa-folder-open-o"> </i> REOUVERTURE DE DOSSIER {% endblock parentTitre %}
+{% block parentContenu %}
+    <p>Confirmez - vous la réouverture du dossier  <br/> 
+        <span>  N° : </span> <span style="font-weight: bold;"> {{ affaire.numeroaffaire }} </span> <br/>
+        <span>  du : </span> <span style="font-weight: bold;"> {{ affaire.dateaffaire|date('d/m/Y') }} </span> 
+        <span>  Client : </span><span style="font-weight: bold;"> {{ affaire.clientphysique.nom }}  </span>
+        ?  </p> <br/>
+    <div class="alert alert-info" role="alert" style="font-size: 12px;">
+        <strong>NB :</strong> Tous les tâches attachées à ce présent seront réactivées.
+    </div>
+{% endblock parentContenu %}
+     {% block parentBoutons %} 
+              <a type="button" class="btn btn-default btn-xm " href="#" id="retour" onclick="location.reload();" style="font-size: 11px;"><i class="fa fa-arrow-left"> </i> Retour</a>
+          <button type="submit" class="btn btn-default btn-xm " style="font-size: 11px;background: #000066;color: white;"> <i class="fa fa-cut"> </i> Réouverture</button>
+                  <span class='tachat_img hide'><img src="{{ asset('/images/712.GIF') }}" alt="Second slide" class='img-circle' style="height: 20px;width: 20px;"> Réouverture en cours ...</span>
+        {% endblock parentBoutons %}
