@@ -7,12 +7,11 @@
         </div>
         <div class="panel-body">
            <p>
-               <strong> 
                <span> Note du : </span> 
                <span style="font-weight: bold;"> {{ noteredigee.datepersist|date('d/m/Y') }} - {{ noteredigee.datepersist|date('H:i') }} </span> 
                <span>   -  Catégorie : </span><span style="font-weight: bold;"> {{ noteredigee.categorienote.libelle }}  </span><br/>
                <span>   Rédiger par : </span><span style="font-weight: bold;"> {{ noteredigee.agent.nomPrenom }}  </span><br/>
-               <span>   Rédaction : </span><br/><p style="font-weight: bold;margin-left: 10%;"> {{ noteredigee.agent.nomPrenom }}  </p>
+               <span>   Rédaction : </span><br/><p style="font-weight: bold;margin-left: 10%;"> {{ noteredigee.note }}  </p>
                 <br/>
                             <span>   Pièce(s) jointe(s) </span>
                         <div class="table-responsive">
