@@ -8,7 +8,7 @@ use BZ\ModelBundle\Entity\TacheAudience;
 use BZ\ModelBundle\Form\TacheAudienceType;
 use BZ\ModelBundle\Form\TacheAudienceAutreType;
 use BZ\ModelBundle\Form\DateDebutAudienceType;
-use BZ\ModelBundle\Form\DateFinAudienceType;
+//use BZ\ModelBundle\Form\DateFinAudienceType;
 
 class TacheAffaireController extends Controller
 {
@@ -132,24 +132,22 @@ class TacheAffaireController extends Controller
     
     public function agenda_periodiqueAction()
     {
-          $datedebut = new TacheAudience;
-          $datefin = new TacheAudience;
-          $datedebut->setDateparticipee(new \ Datetime());
-          $datefin->setDateEnregistree(new \ Datetime());
-          $form1 = $this->createForm(new DateDebutAudienceType(), $datedebut); 
-          $form2 = $this->createForm(new DateFinAudienceType(), $datefin); 
+          $dateresolution= new TacheAudience;
+          $dateresolution->setDateparticipee(new \ Datetime());
+          $dateresolution->setDateEnregistree(new \ Datetime());
+          $form = $this->createForm(new DateDebutAudienceType(), $dateresolution); 
+          //$form2 = $this->createForm(new DateFinAudienceType(), $datefin); 
            $request = $this->get('request');
             if ($request->getMethod() == 'POST') 
             {
-                $form1->bind($request);
-                $form2->bind($request);
+                $form->bind($request);
+               // $form2->bind($request);
                 $tacheaudiences= $this->getDoctrine()
                                       ->getManager()->getRepository('BZModelBundle:TacheAudience')
-                                      ->getAgenda($datedebut->getDateparticipee(),$datefin->getDateEnregistree(),$this->getDoctrine()->getManager()->getRepository('BZModelBundle:Agent')->findOneBy(Array('user'=>  $this->getUser()->getId())));
+                                      ->getAgenda($dateresolution->getDateparticipee(),$dateresolution->getDateEnregistree(),$this->getDoctrine()->getManager()->getRepository('BZModelBundle:Agent')->findOneBy(Array('user'=>  $this->getUser()->getId())));
                                           //  ->getAgenda($datedebut->getDateparticipee(),$datefin->getDateEnregistree());
-                
                 return $this->render('BZVueBundle:TacheAffaire:agenda_periodique.html.twig', 
-                     array('menu_num' => 1, 'tacheaudiences' => $tacheaudiences, 'form1'   => $form1->createView(), 'form2'   => $form2->createView())); 
+                     array('menu_num' => 1, 'tacheaudiences' => $tacheaudiences, 'form'   => $form->createView())); 
             }
             $tacheaudiences= $this->getDoctrine()
                                       ->getManager()->getRepository('BZModelBundle:TacheAudience')
@@ -157,7 +155,7 @@ class TacheAffaireController extends Controller
                                           'agentdestinataire'=>$this->getDoctrine()->getManager()->getRepository('BZModelBundle:Agent')->findOneBy(Array('user'=>  $this->getUser()->getId()))));
             
              return $this->render('BZVueBundle:TacheAffaire:agenda_periodique.html.twig', 
-                     array('menu_num' => 1, 'tacheaudiences' => $tacheaudiences, 'form1'   => $form1->createView(), 'form2'   => $form2->createView()));          
+                     array('menu_num' => 1, 'tacheaudiences' => $tacheaudiences, 'form'   => $form->createView()));          
     }
     
    public function ajouter_tacheaudienceAction($id)

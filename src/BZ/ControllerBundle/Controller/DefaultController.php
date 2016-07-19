@@ -22,8 +22,23 @@ class DefaultController extends Controller
             $user->setIsconnect(1);
             $userManager->updateUser($user);
             $userManager->reloadUser($user);
-            return $this->render('BZUserBundle::layout.html.twig',array('menu_num'   =>0 ));
+            
+            $affaire = $this->getDoctrine()
+                                      ->getManager()->getRepository('BZModelBundle:Affaire')
+                                      ->findBy(Array('estdelete'=>false));
+            $exercice = $this->getDoctrine()
+                                      ->getManager()->getRepository('BZModelBundle:Exercice')
+                                      ->findBy(Array('estdelete'=>false));
+            $juridiction = $this->getDoctrine()
+                                      ->getManager()->getRepository('BZModelBundle:Juridiction')
+                                      ->findBy(Array('estdelete'=>false));
+             $notes= $this->getDoctrine()
+                                      ->getManager()->getRepository('BZModelBundle:PartagerNote')
+                                      ->findBy(Array('estarchivee'=>false,'estdelete'=>false, 'estpubliee'=>true, 'agentdestinataire'=>$this->getDoctrine() ->getManager()->getRepository('BZModelBundle:Agent')->findOneBy(Array('user'=>$this->getUser()))),Array('datepubliee'=>'ASC'));
+            return $this->render('BZUserBundle::layout.html.twig',
+                    array('notes'   =>$notes,'affaires'   =>$affaire, 'exercices'   =>$exercice, 'juridictions'   =>$juridiction));
         }
+        
     }
     
     public function notificationsAction()
@@ -44,7 +59,9 @@ class DefaultController extends Controller
                         ->getManager()
                         ->getRepository('BZUserBundle:User')->findBy(array('enabled' => true,'locked' => false,'isconnect' => "1"));
           $nbreusers =0;
-          foreach ($userconnectes as $i) { $nbreusers++; }
+          foreach ($userconnectes as $i) { 
+              if ($i->getId()!=$this->getUser()->getId()){ $nbreusers++; }
+               }
           
           $notes= $this->getDoctrine()
                                       ->getManager()->getRepository('BZModelBundle:PartagerNote')

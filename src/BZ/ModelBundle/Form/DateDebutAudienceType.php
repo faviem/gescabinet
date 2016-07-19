@@ -17,11 +17,18 @@ class DateDebutAudienceType extends AbstractType
     {
         $builder
            ->add('dateparticipee', 'date', array(
-                    'label' =>false,
+                    'label' =>'AGENDA DE LA PERIODE DU ',
                     'widget' => 'single_text',
                     'input' => 'datetime',
                     'format' => 'dd/MM/yyyy',
                     'attr' => array('class' => 'date1 col-md-2'),
+                ))
+           ->add('dateEnregistree', 'date', array(
+                    'label' =>'AU',
+                    'widget' => 'single_text',
+                    'input' => 'datetime',
+                    'format' => 'dd/MM/yyyy',
+                    'attr' => array('class' => 'date2 col-md-2 '),
                 ))
                 
         ;

@@ -97,7 +97,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <li><a href="{{ path("read_dossierrecus") }}">Boîte de Dossiers</a></li>
                                 <li><a href="{{ path("read_audiencerecus", {'exercice': 2010}) }}">Boîte d'Audiences </a> </li>
                                 <li><a href="{{ path("agenda_periodique") }}">Agenda périodique</a> </li>
-                              </ul>
+                            </ul>
                         </li>
                         <li class="menu-list"><a href="#"><i class="fa fa-edit"></i> 
                                 <span  style="font-size: 14px;">Gestion des notes</span></a>
@@ -152,12 +152,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     <li class="dropdown">
                                         <a href="{{ path('read_audienceencours') }}" class="dropdown-toggle" >
                                             <i class="fa fa-comments-o"></i><span class="badge nbreaudience">0</span></a>
-                                     </li>
+                                    </li>
 
                                     <li class="dropdown">
-                                        <a href="{{ path('read_tachenonresolue') }}" class="dropdown-toggle" ><i class="fa fa-folder-o"></i>
-                                            <span class="badge blue nbretache">0</span></a>
-                                       </li>	
+                                        <a href="{{ path('read_tachenonresolue') }}" class="dropdown-toggle" >
+                                            <i class="fa fa-folder-o"></i><span class="badge blue nbretache">0</span></a>
+                                    </li>	
                                     <li class="dropdown">
                                         <a href="{{ path("read_partagernote") }}" class="dropdown-toggle" >
                                             <i class="fa fa-edit"></i><span class="badge blue1 nbrenotepartager">0</span></a>
@@ -175,7 +175,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                             <div class="profile_img">	
                                                 <span>
-                                                  <img class="img-circle " alt="Ma photo de profil" src="{% if app.user is not null %}{% if app.user.photopersonnel is not null %} {{ asset(app.user.photopersonnel.webPath) }} {% else %} {{ asset('uploads/PhotoPersonnel/user.jpg') }} {% endif %}{% else %} {{ asset('uploads/PhotoPersonnel/user.jpg') }} {% endif %}"  style="width: 100%;height: 100%;"/>
+                                                    <img class="img-circle " alt="Ma photo de profil" src="{% if app.user is not null %}{% if app.user.photopersonnel is not null %} {{ asset(app.user.photopersonnel.webPath) }} {% else %} {{ asset('uploads/PhotoPersonnel/user.jpg') }} {% endif %}{% else %} {{ asset('uploads/PhotoPersonnel/user.jpg') }} {% endif %}"  style="width: 100%;height: 100%;"/>
                                                 </span> 
                                                 <div class="user-name">
                                                     <p style="font-size: 9.5px;">{{ app.user.nomPrenom }}<span style="font-size: 9px;"> {{ app.user.profil.libelle }}</span></p>
@@ -205,17 +205,235 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div id="page-wrapper" style="font-size: 14px;">
 
                     {% block content_body %}
-
+                        <div class="col-md-9" style="margin-top: -2.7%;">
+                            <div class="panel panel-default">
+                                <div class="panel-body1 ">
+                                    <div>
+                                        <span style="font-size: 14px;font-weight: bold;"> STATISTIQUE GLOBALE DES DOSSIERS </span> 
+                                    </div>
+                                    <hr/>
+                                    <div class="table-responsive">
+                                        <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                            <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
+                                                <thead>
+                                                    <tr role="row">
+                                                        <th class="sorting_desc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" aria-sort="descending" style="font-size: 13px;text-align: center;">
+                                                            Exercice 
+                                                        </th>
+                                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="font-size: 13px;text-align: center;">
+                                                            Nbre d'affaires exprimées
+                                                        </th>
+                                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="font-size: 13px;text-align: center;">
+                                                            Nbre d'affaires en cours
+                                                        </th>
+                                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="font-size: 13px;text-align: center;">
+                                                            Nbre d'affaires résolues
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% set nbreExprimeetot = 0 %}
+                                                    {% set nbreEncourstot = 0 %}
+                                                    {% for element in  exercices %}
+                                                            {% set nbreExprimee = 0 %}
+                                                            {% set nbreEncours = 0 %}
+                                                             {% for elt in  affaires %}
+                                                                {% if elt.exercice.id==element.id %}
+                                                                   {% set nbreExprimee = nbreExprimee+1 %}
+                                                                    {% if elt.estarchivee==0 %}
+                                                                         {% set nbreEncours = nbreEncours+1 %}
+                                                                    {% endif %}
+                                                                {% endif %}
+                                                           
+                                                        {% endfor %}
+                                                         <tr class="gradeA">
+                                                             <td class="sorting_1" style="" colspan="1" style="font-size: 11px;" >
+                                                                    {{ element.annee }} 
+                                                             </td>
+                                                             <td class="" style="font-size: 12px;text-align: center;" colspan="1">{{  nbreExprimee }} </td>
+                                                             <td class="" style="font-size: 12px;text-align: center;" colspan="1">{{  nbreEncours }} </td>
+                                                             <td class="" style="font-size: 12px;text-align: center;" colspan="1">{{  nbreExprimee-nbreEncours }} </td>
+                                                            </tr>
+                                                            {% set nbreExprimeetot = nbreExprimeetot + nbreExprimee %}
+                                                            {% set nbreEncourstot = nbreEncourstot + nbreEncours %}
+                                                    {% endfor %}
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr role="row">
+                                                        <th style="font-size: 12px;text-align: center;">
+                                                            Totaux 
+                                                        </th>
+                                                        <th style="font-size: 12px;text-align: center;">
+                                                            {{ nbreExprimeetot }}
+                                                        </th >
+                                                        <th style="font-size: 12px;text-align: center;">
+                                                            {{ nbreEncourstot }}
+                                                        </th>
+                                                        <th style="font-size: 12px;text-align: center;">
+                                                            {{ nbreExprimeetot-nbreEncourstot }}
+                                                        </th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <div class="table-responsive">
+                                        <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                            <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example1" aria-describedby="dataTables-example_info">
+                                                <thead>
+                                                    <tr role="row">
+                                                        <th class="sorting_desc" tabindex="0" aria-controls="dataTables-example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" aria-sort="descending" style="font-size: 13px;text-align: center;">
+                                                            Juridiction 
+                                                        </th>
+                                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="font-size: 13px;text-align: center;">
+                                                            Nbre d'affaires exprimées
+                                                        </th>
+                                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="font-size: 13px;text-align: center;">
+                                                            Nbre d'affaires en cours
+                                                        </th>
+                                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="font-size: 13px;text-align: center;">
+                                                            Nbre d'affaires résolues
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% set nbreExprimeetot = 0 %}
+                                                    {% set nbreEncourstot = 0 %}
+                                                    {% for element in  juridictions %}
+                                                            {% set nbreExprimee = 0 %}
+                                                            {% set nbreEncours = 0 %}
+                                                             {% for elt in  affaires %}
+                                                                {% if elt.exercice.id==element.id %}
+                                                                   {% set nbreExprimee = nbreExprimee+1 %}
+                                                                    {% if elt.estarchivee==0 %}
+                                                                         {% set nbreEncours = nbreEncours+1 %}
+                                                                    {% endif %}
+                                                                {% endif %}
+                                                           
+                                                        {% endfor %}
+                                                         <tr class="gradeA">
+                                                             <td class="sorting_1" style="" colspan="1" style="font-size: 11px;" >
+                                                                    {{ element.libelle }} 
+                                                             </td>
+                                                             <td class="" style="font-size: 12px;text-align: center;" colspan="1">{{  nbreExprimee }} </td>
+                                                             <td class="" style="font-size: 12px;text-align: center;" colspan="1">{{  nbreEncours }} </td>
+                                                             <td class="" style="font-size: 12px;text-align: center;" colspan="1">{{  nbreExprimee-nbreEncours }} </td>
+                                                            </tr>
+                                                            {% set nbreExprimeetot = nbreExprimeetot + nbreExprimee %}
+                                                            {% set nbreEncourstot = nbreEncourstot + nbreEncours %}
+                                                    {% endfor %}
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr role="row">
+                                                        <th style="font-size: 12px;text-align: center;">
+                                                            Totaux 
+                                                        </th>
+                                                        <th style="font-size: 12px;text-align: center;">
+                                                            {{ nbreExprimeetot }}
+                                                        </th >
+                                                        <th style="font-size: 12px;text-align: center;">
+                                                            {{ nbreEncourstot }}
+                                                        </th>
+                                                        <th style="font-size: 12px;text-align: center;">
+                                                            {{ nbreExprimeetot-nbreEncourstot }}
+                                                        </th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                <hr/>
+                   <div>
+                       <span style="font-size: 14px;font-weight: bold;"> PULICATIONS EN COURS ...</span> 
+                   </div>
+                <hr/>
+                <div class="table-responsive">
+                    <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                        <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example2" aria-describedby="dataTables-example_info">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting_desc" tabindex="0" aria-controls="dataTables-example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" aria-sort="descending" style="font-size: 13px;text-align: center;">
+                                        Actions 
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTables-example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="font-size: 13px;text-align: center;">
+                                        Catégorie
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTables-example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="font-size: 13px;text-align: center;">
+                                        Date d'édition
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTables-example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="font-size: 13px;text-align: center;">
+                                        Publier par
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTables-example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="font-size: 13px;text-align: center;">
+                                        Date de publication
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% set nbre = 0 %}
+                                {% for element in  notes %}
+                                    <tr class="gradeA {% if nbre%2==0 %} odd {% else %} even{% endif%}">
+                                        {% set nbre = nbre+1 %}
+                                        <td class="sorting_1" style="text-align: center;">
+                                            <div class="profile_details">		
+                                                <ul>
+                                                    <li class="dropdown ">
+                                                        <a href="#" class="dropdown-toggle btn btn-default btn-xs" data-toggle="dropdown" aria-expanded="false">
+                                                            <i class="fa fa-cog"> </i> </a>
+                                                        <ul class="dropdown-menu drp-mnu">
+                                                            <li> 
+                                                                <a href="{{ path('consulter_note', {'id':  element.noteredigee.id }) }}" class="createformulaire" title="Consulter la note"><i class="fa fa-align-center"> </i> Consulter </a>
+                                                            </li>   
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td class="" style="font-size: 12px;">
+                                            <div class="dropdown">
+                                                <a href="#" title="" class="" data-toggle="dropdown" aria-expanded="false">
+                                                    {{  element.noteredigee.categorienote.libelle }} 
+                                                    <div class="ripple-wrapper"></div></a>
+                                                <ul class="dropdown-menu float-right" style="text-align: left;font-size: 10px;">
+                                                    <li>
+                                                        <a href="#"  style="font-weight: bold;width: 50%;display: block;">{{ element.noteredigee.note}}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td class="" style="font-size: 12px;text-align: center;"> 
+                                            {{ element.noteredigee.datepersist|date('d/m/Y') }} - {{ element.noteredigee.datepersist|date('H:i') }}  
+                                        </td>
+                                        <td class="" style="font-size: 12px;text-align: center;">
+                                            {% if element.agentexpediteur.user.id==app.user.id %}   
+                                                Moi même
+                                            {% else %}
+                                                {{  element.agentexpediteur.nomPrenom }} 
+                                            {% endif %}
+                                        </td>
+                                        <td class="" style="font-size: 12px;text-align: center;">
+                                            {{ element.datepubliee|date('d/m/Y') }} - {{ element.datepubliee|date('H:i') }}  
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                            </div> 
+                            </div>
+                            </div>
                     {% endblock content_body %}
-                     {% block content_tchat %}
-                    <div class="col-md-3" id="contenudiscute">
-                        
-                    </div>
-                    <div class="col-md-3 grid_box1" style="float: right;">
-                        <form action="{{ path('envoi_sms')}}" method="post" id="chatroommesg">
-                            <input  class="form-control1" type="text" placeholder="Entrer le message ..." name="contenumesg" id="contenumesg"  />
-                       </form>
-                    </div>
+                    {% block content_tchat %}
+                        <div class="col-md-3" id="contenudiscute">
+
+                        </div>
+                        <div class="col-md-3 grid_box1" style="float: right;">
+                            <form action="{{ path('envoi_sms')}}" method="post" id="chatroommesg">
+                                <input  class="form-control1" type="text" placeholder="Entrer le message ..." name="contenumesg" id="contenumesg"  />
+                            </form>
+                        </div>
                     {% endblock content_tchat %}
                 </div>
                 <!--footer section start-->
@@ -239,9 +457,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <script>
             $(document).ready(function () {
                 $('#dataTables-example').dataTable();
+                $('#dataTables-example1').dataTable();
+                $('#dataTables-example2').dataTable();
                 $(".chzn-select").chosen();
-              //  $('form input.date').datepicker();
-               $("#chatroommesg").submit(function (event) {
+                //  $('form input.date').datepicker();
+                $("#chatroommesg").submit(function (event) {
                     var $this = $(this);
                     $.ajax({
                         type: $this.attr('method'),
@@ -249,31 +469,35 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         cache: false,
                         data: $this.serialize(),
                         success: function () {
-                             $('#contenumesg').val('');
+                            $('#contenumesg').val('');
                             notification();
                             // location.reload();
                         },
-                        error: function () {}
-                    });event.preventDefault();
+                        error: function () {
+                        }
+                    });
+                    event.preventDefault();
                 });
-              function notification(){
-                 $.ajax({
-                   type: 'GET',
-                   url: "{{ path('notifications') }}",
-                   cache: false,
-                   success: function(data) {
-                       $('#contenudiscute').html(data.contenu);
-                       $('.nbrenotepartager').text(data.nbrenote);
-                       $('.nbreutilisateurs').text(data.nbreuser);
-                       $('.nbreaudience').text(data.nbreaudience);
-                       $('.nbretache').text(data.nbretache);
-                        $("#contenudiscute .scrollbar1").scrollTop( $("#contenudiscute .scrollbar1")[0].scrollHeight );
-                   },
-                   error: function() {alert('coupé');} });
-             }
-             notification();
-             //nbresms();
-             setInterval(notification, 20000);
+                function notification() {
+                    $.ajax({
+                        type: 'GET',
+                        url: "{{ path('notifications') }}",
+                        cache: false,
+                        success: function (data) {
+                            $('#contenudiscute').html(data.contenu);
+                            $('.nbrenotepartager').text(data.nbrenote);
+                            $('.nbreutilisateurs').text(data.nbreuser);
+                            $('.nbreaudience').text(data.nbreaudience);
+                            $('.nbretache').text(data.nbretache);
+                            $("#contenudiscute .scrollbar1").scrollTop($("#contenudiscute .scrollbar1")[0].scrollHeight);
+                        },
+                        error: function () {
+                            alert('coupé');
+                        }});
+                }
+                notification();
+                //nbresms();
+                setInterval(notification, 20000);
             });
         </script>
 
