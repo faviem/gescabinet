@@ -189,4 +189,15 @@ class NoteController extends Controller
                      array('menu_num' => 1,'id' => $id, 'noteredigee' => $element ));             
     }
     
+    public function consulter_noteAction($id)
+    {
+            $note= $this->getDoctrine()
+                                      ->getManager()->getRepository('BZModelBundle:NoteRedigee')
+                                      ->find($id);
+            
+            $element=$note;
+             return $this->render('BZVueBundle:NoteRedigee:consulter_note.html.twig', 
+                     array('menu_num' => 1,'id' => $id, 'noteredigee' => $element ));             
+    }
+    
 }

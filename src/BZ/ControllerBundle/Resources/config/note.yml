@@ -41,8 +41,8 @@ depublier_note:
         id: \d+
         
 consulter_note:
-    pattern:    /depublier_note/{id}
-    defaults: { _controller: BZControllerBundle:Note:depublier_note }
+    pattern:    /consulter_note/{id}
+    defaults: { _controller: BZControllerBundle:Note:consulter_note }
     requirements:
         id: \d+
         

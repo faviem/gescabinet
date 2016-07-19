@@ -1,0 +1,54 @@
+<div style="display: block;" class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+<form  class="ui-draggable" style="position: relative; left: 424px; top: 229px;" action="#" method="post"  >
+<div class="col-lg-4">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            CONSULATION DE LA NOTE
+        </div>
+        <div class="panel-body">
+           <p>
+               <strong> 
+               <span> Note du : </span> 
+               <span style="font-weight: bold;"> {{ noteredigee.datepersist|date('d/m/Y') }} - {{ noteredigee.datepersist|date('H:i') }} </span> 
+               <span>   -  Catégorie : </span><span style="font-weight: bold;"> {{ noteredigee.categorienote.libelle }}  </span><br/>
+               <span>   Rédiger par : </span><span style="font-weight: bold;"> {{ noteredigee.agent.nomPrenom }}  </span><br/>
+               <span>   Rédaction : </span><br/><p style="font-weight: bold;margin-left: 10%;"> {{ noteredigee.agent.nomPrenom }}  </p>
+                <br/>
+                            <span>   Pièce(s) jointe(s) </span>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr style="font-size: 11px;">
+                                        <th style="text-align: center;">Nom du fichier</th>
+                                        <th style="text-align: center;">Date enregistrement</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% set nbre = 0 %}
+                                {% for element in  noteredigee.piecenotes %}
+                                     {% set nbre = nbre+1 %}
+                                    <tr  style="font-size: 11px;">
+                                        <td>{{ element.alt }}</td>
+                                        <td  style="text-align: center;">{{ element.dateEnregistrement |date('d/m/Y') }} - {{ element.dateEnregistrement |date('H:i') }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                    {% if nbre==0 %}
+                                        <tr>
+                                            <td colspan="3" style="font-size: 10px;color: #770000;text-align: center;">Aucun fichier n'est encore joint à la présente note ... !!!</td>
+                                            </tr>
+                                     {% endif  %}
+                                </tbody>
+                            </table>
+                        </div>
+               
+               </p>
+           
+        </div>
+        <div class="panel-footer">
+                 <a type="button" class="btn btn-default btn-xm " href="#" id="retour" onclick="location.reload();" style="font-size: 11px;"><i class="fa fa-arrow-left"> </i> Retour</a>
+          </div>
+    </div>
+</div>
+     
+</form>
+</div>
