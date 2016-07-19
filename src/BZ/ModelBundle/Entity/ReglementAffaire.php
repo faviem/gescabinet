@@ -252,7 +252,7 @@ class ReglementAffaire
      * @param \integer $montantrestant
      * @return ReglementAffaire
      */
-    public function setMontantrestant(\integer $montantrestant)
+    public function setMontantrestant($montantrestant)
     {
         $this->montantrestant = $montantrestant;
 
