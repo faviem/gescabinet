@@ -5,6 +5,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use BZ\ModelBundle\Entity\NoteRedigee;
+use BZ\ModelBundle\Entity\PartagerNote;
 use BZ\ModelBundle\Form\NoteRedigeeType;
 
 class NoteController extends Controller
