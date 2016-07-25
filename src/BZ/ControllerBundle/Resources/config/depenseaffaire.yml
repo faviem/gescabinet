@@ -1,0 +1,20 @@
+create_depenseaffaire:
+    pattern:    /create_depenseaffaire/{id}
+    defaults: { _controller: BZControllerBundle:DepenseAffaire:create_depenseaffaire }
+    
+read_depenseaffaire:
+    pattern:    /read_depenseaffaire
+    defaults: { _controller: BZControllerBundle:DepenseAffaire:read_depenseaffaire }  
+       
+update_depenseaffaire:
+    pattern:    /update_depenseaffaire/{id}
+    defaults: { _controller: BZControllerBundle:DepenseAffaire:update_depenseaffaire }
+    requirements:
+        id: \d+
+    
+delete_depenseaffaire:
+    pattern:    /delete_depenseaffaire/{id}
+    defaults: { _controller: BZControllerBundle:DepenseAffaire:delete_depenseaffaire }
+    requirements:
+        id: \d+
+        

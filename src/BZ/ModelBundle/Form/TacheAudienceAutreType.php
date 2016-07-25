@@ -18,7 +18,7 @@ class TacheAudienceAutreType extends AbstractType
         $builder
                    
             ->add('conclusion', 'textarea', array(
-            'label' => 'Entrer la conclusion (décision) du jury',
+            'label' => 'Entrer la consigne à l\'audience (décision du jury) ',
              'attr' =>array(
             'class' =>'form-control'
             )))

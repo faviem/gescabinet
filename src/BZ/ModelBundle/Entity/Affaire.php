@@ -24,6 +24,11 @@ class Affaire
     */
     private $reglementaffaires;   
     /**
+    * @ORM\OneToMany(targetEntity="BZ\ModelBundle\Entity\DepenseAffaire", mappedBy="affaire")
+    * @ORM\JoinColumn(nullable=true) 
+    */
+    private $depenseaffaires;   
+    /**
     * @ORM\OneToMany(targetEntity="BZ\ModelBundle\Entity\TacheAffaire", mappedBy="affaire")
     * @ORM\JoinColumn(nullable=true) 
     */
@@ -115,6 +120,13 @@ class Affaire
      * 
      */
     private $couthonoraire;
+    /**
+     * @var integer
+     * 
+     *  @ORM\Column(name="coutdepense", type="integer", nullable=true)
+     * 
+     */
+    private $coutdepense;
     
     /**
      * @var \Date
@@ -1000,5 +1012,61 @@ class Affaire
     public function getObjetlitige()
     {
         return $this->objetlitige;
+    }
+
+    /**
+     * Set coutdepense
+     *
+     * @param integer $coutdepense
+     * @return Affaire
+     */
+    public function setCoutdepense($coutdepense)
+    {
+        $this->coutdepense = $coutdepense;
+
+        return $this;
+    }
+
+    /**
+     * Get coutdepense
+     *
+     * @return integer 
+     */
+    public function getCoutdepense()
+    {
+        return $this->coutdepense;
+    }
+
+    /**
+     * Add depenseaffaires
+     *
+     * @param \BZ\ModelBundle\Entity\DepenseAffaire $depenseaffaires
+     * @return Affaire
+     */
+    public function addDepenseaffaire(\BZ\ModelBundle\Entity\DepenseAffaire $depenseaffaires)
+    {
+        $this->depenseaffaires[] = $depenseaffaires;
+
+        return $this;
+    }
+
+    /**
+     * Remove depenseaffaires
+     *
+     * @param \BZ\ModelBundle\Entity\DepenseAffaire $depenseaffaires
+     */
+    public function removeDepenseaffaire(\BZ\ModelBundle\Entity\DepenseAffaire $depenseaffaires)
+    {
+        $this->depenseaffaires->removeElement($depenseaffaires);
+    }
+
+    /**
+     * Get depenseaffaires
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDepenseaffaires()
+    {
+        return $this->depenseaffaires;
     }
 }

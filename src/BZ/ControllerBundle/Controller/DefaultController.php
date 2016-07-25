@@ -108,6 +108,11 @@ class DefaultController extends Controller
             $identitestructure= $this->getDoctrine()
                                       ->getManager()->getRepository('BZModelBundle:IdentiteStructure')
                                       ->find(1);
+            if($identitestructure == null){
+                 $identitestructure= $this->getDoctrine()
+                                      ->getManager()->getRepository('BZModelBundle:IdentiteStructure')
+                                      ->find(2);
+            }
             $form = $this->createForm(new IdentiteStructureType(), $identitestructure); 
             $request = $this->get('request');
             if ($request->getMethod() == 'POST') 

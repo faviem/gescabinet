@@ -74,6 +74,9 @@ bz_objetlitige:
 bz_typedepense:
     resource: "@BZControllerBundle/Resources/config/typedepense.yml"
     prefix:   /
+bz_depenseaffaire:
+    resource: "@BZControllerBundle/Resources/config/depenseaffaire.yml"
+    prefix:   /
 
 identitestructure:
     pattern:    /identitestructure

@@ -1,0 +1,14 @@
+{% extends "BZVueBundle::parent_delete.html.twig"%}
+{% block parentAction %} 
+ {{ path('delete_depenseaffaire',{'id': id})}}
+{% endblock parentAction %}
+{% block parentEnctype %}  
+
+{% endblock parentEnctype %}
+{% block parentContenu %}
+    
+       <p>Suppression de la dépense du : <br/> <strong>{{  element.datedepense |date('d/m/Y') }}  </strong> </p>
+       <p>Montant dépensé :   <strong> {{  element.montantdepense }}  </strong> Pour le compte de l'affaire N° :  <strong> {{  element.affaire.numeroaffaire }}   </strong> </p>
+       <br/>
+    
+{% endblock parentContenu %}

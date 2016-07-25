@@ -20,6 +20,7 @@
                             <span>  Nature : </span><span style="font-weight: bold;"> {{ affaire.natureaffaire.libelle }}  </span><br/>
                             <span>  Coût de l'affaire : </span><span style="font-weight: bold;"> {{ affaire.coutaffaire }}  Francs CFA</span><br/>
                             <span>  Restant à payer : </span><span style="font-weight: bold;"> {%if affaire.coutrestant is null %} 0 {% else %}{{ affaire.coutrestant }}{% endif %}  Francs CFA</span><br/>
+                            <span>  Coût des dépenses : </span><span style="font-weight: bold;"> {%if affaire.coutdepense is null %} 0 {% else %}{{ affaire.coutdepense }}{% endif %}  Francs CFA</span><br/>
                             <span>  Juridiction : </span><span style="font-weight: bold;"> {{ affaire.juridiction.libelle }}  </span><br/><br/>
                         {% for tacheaffaire in  affaire.tacheaffaires %}
                             <span>  Affecter à  : </span><span style="font-weight: bold;"> {{ tacheaffaire.agentdestinataire.nomPrenom }}   </span><br/>

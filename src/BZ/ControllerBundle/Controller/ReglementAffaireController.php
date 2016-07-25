@@ -26,7 +26,14 @@ class ReglementAffaireController extends Controller
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($reglementaffaire);
                     $em->flush();
-                }
+                     if($this->getAffaire()->getCoutrestant()-$this->getMontantregelement()<=0){
+                       $this->getAffaire()->setEstreglee(true);
+                    } else{
+                         $this->getAffaire()->setEstreglee(false);
+                    }
+                   $this->getAffaire()->setCoutrestant($this->getAffaire()->getCoutrestant()-$this->getMontantregelement());
+                   $em->flush();
+                   }
              return $this->redirect( $this->generateUrl('read_reglementaffaire', Array('exercice'=>$exercice, 'choix' => 2)));
             }
              return $this->render('BZVueBundle:ReglementAffaire:create_reglementaffaire.html.twig', 
@@ -71,7 +78,7 @@ class ReglementAffaireController extends Controller
             $reglementaffaire= $this->getDoctrine()
                                       ->getManager()->getRepository('BZModelBundle:ReglementAffaire')
                                       ->find($id);
-            $reglementaffaire->getAffaire()->setCoutrestant($reglementaffaire->getAffaire()->getCoutrestant()+$reglementaffaire->getMontantregelement());
+           // $reglementaffaire->getAffaire()->setCoutrestant($reglementaffaire->getAffaire()->getCoutrestant()+$reglementaffaire->getMontantregelement());
             $form = $this->createForm(new ReglementAffaireType(), $reglementaffaire); 
             $request = $this->get('request');
             if ($request->getMethod() == 'POST') 
