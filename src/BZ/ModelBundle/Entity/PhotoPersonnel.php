@@ -15,7 +15,11 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 */
 class PhotoPersonnel
 {
-
+    /**
+    * @ORM\OneToOne(targetEntity="BZ\ModelBundle\Entity\PhotoPersonnel", cascade={"persist"})
+    * @ORM\JoinColumn(nullable=true) 
+    */
+    private $photopersonnel;
     /**
     * @var integer $id
     *

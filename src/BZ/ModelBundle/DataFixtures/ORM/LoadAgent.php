@@ -17,6 +17,7 @@ namespace BZ\ModelBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use BZ\ModelBundle\Entity\Agent;
+use BZ\ModelBundle\Entity\IdentiteStructure;
 use BZ\ModelBundle\Entity\Profil;
 use BZ\UserBundle\Entity\User;
 use Doctrine\Common\DataFixtures\AbstractFixture;
@@ -26,13 +27,18 @@ class LoadAgent extends AbstractFixture implements FixtureInterface, OrderedFixt
     
     public function load(ObjectManager $manager)
     {
-        
+         $structure= new IdentiteStructure;
+        $structure->setNomcabinet("Cabinet COMPTENCE PLUS +");
+        $structure->setRaisonsociale("La Solution Informatique");
+        $structure->setTelcabinet("+229 ......................");
+        $manager->persist($structure);
+        $manager->flush();
 //          $manager->flush();
 //            $toutprofil= $manager->getRepository('BZModelBundle:Profil')->findAll();
 //              foreach ($toutprofil as $element){
 //                $manager->remove($element);
 //            }
-          $manager->flush();
+//          $manager->flush();
           $toutagent= $manager->getRepository('BZModelBundle:Agent')->findAll();
             foreach ($toutagent as $element){
                 $manager->remove($element);
@@ -51,6 +57,7 @@ class LoadAgent extends AbstractFixture implements FixtureInterface, OrderedFixt
         $profil->setLibelle("Administrateur");
         $manager->persist($profil);
         $manager->flush();
+       
         $user= new User;
         $user->setUsername('admin');        
         $user->setEnabled(true);

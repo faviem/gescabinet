@@ -15,9 +15,9 @@
                     <div class="but_list">
             <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
                 <ul id="myTab" class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="false">Identité du dossier</a></li>
-                    <li role="presentation" class=""><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="true">Client</a></li>
-                    <li role="presentation" class=""><a href="#profile1" role="tab" id="profile-tab1" data-toggle="tab" aria-controls="profile1" aria-expanded="true">Partie Adverse</a></li>
+                    <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="false" style="font-size: 12.5px;">Identité du dossier</a></li>
+                    <li role="presentation" class=""><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="true" style="font-size: 12.5px;"> Inormations des Parties </a></li>
+                    <li role="presentation" class=""><a href="#profile1" role="tab" id="profile-tab1" data-toggle="tab" aria-controls="profile1" aria-expanded="true" style="font-size: 12.5px;">Règlement au comptant</a></li>
                  
                 </ul>
                 <div id="myTabContent" class="tab-content">
@@ -25,15 +25,30 @@
                         <p>
                              {{ form_widget(formaffaire) }}
                         </p>
+                        <div>
+                            <label> Total des Frais du dossier </label>
+                            <input type="number" id="montantaffaire" disabled="true" class="form-control">  
+                        </div>
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
+                        <br/>
+                        <span style="font-size: 12.5px;font-weight: bold;">Inormations du client</span>
+                        <hr/>
                         <p>
                             {{ form_widget(formclient) }}
-                            </p>
+                        </p>
+                            <br/>
+                            <span>  ------------------------------------------------------------------------------------------------------------- </span>
+                        <span style="font-size: 12.5px;font-weight: bold;">Inormations de la partie adverse </span>
+                        <hr/>
+                        <p>
+                            {{ form_widget(formadverse) }}
+                        </p>
+                       
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="profile1" aria-labelledby="profile-tab1">
                         <p>
-                             {{ form_widget(formadverse) }}
+                            {{ form_widget(formreglement) }}
                         </p>
                     </div>
                 </div>
@@ -49,7 +64,52 @@
             </div>
         </div>
         {{ form_rest(formaffaire) }}
-
+        {{ form_rest(formadverse) }}
+        {{ form_rest(formclient) }}
+        {{ form_rest(formreglement) }}
         
     </form>
 {% endblock content_body %}
+    {% block javascript %} 
+        <script>
+       $('form input.date').datepicker();
+   $('#bz_modelbundle_affaire_coutouverture').val(0);
+   $('#bz_modelbundle_affaire_coutprocedure').val(0);
+   $('#bz_modelbundle_affaire_couthonoraire').val(0);
+    //var coutouverture = $('#bz_modelbundle_affaire_coutouverture').val();
+   // var coutprocedure = $('#bz_modelbundle_affaire_coutprocedure').val();
+    //var couthonoraire = $('#bz_modelbundle_affaire_couthonoraire').val();
+    
+    $('#bz_modelbundle_affaire_coutouverture').keypress(function() {
+             $('#montantaffaire').val(parseInt($('#bz_modelbundle_affaire_coutouverture').val())+parseInt($('#bz_modelbundle_affaire_coutprocedure').val())+parseInt($('#bz_modelbundle_affaire_couthonoraire').val()));
+     });
+    $('#bz_modelbundle_affaire_coutouverture').keydown(function() {
+       $('#montantaffaire').val(parseInt($('#bz_modelbundle_affaire_coutouverture').val())+parseInt($('#bz_modelbundle_affaire_coutprocedure').val())+parseInt($('#bz_modelbundle_affaire_couthonoraire').val()));
+   });
+    $('#bz_modelbundle_affaire_coutouverture').keyup(function() {
+      $('#montantaffaire').val(parseInt($('#bz_modelbundle_affaire_coutouverture').val())+parseInt($('#bz_modelbundle_affaire_coutprocedure').val())+parseInt($('#bz_modelbundle_affaire_couthonoraire').val()));
+  });
+     //----------------------------
+    $('#bz_modelbundle_affaire_coutprocedure').keypress(function() {
+     $('#montantaffaire').val(parseInt($('#bz_modelbundle_affaire_coutouverture').val())+parseInt($('#bz_modelbundle_affaire_coutprocedure').val())+parseInt($('#bz_modelbundle_affaire_couthonoraire').val()));
+ });
+    $('#bz_modelbundle_affaire_coutprocedure').keydown(function() {
+     $('#montantaffaire').val(parseInt($('#bz_modelbundle_affaire_coutouverture').val())+parseInt($('#bz_modelbundle_affaire_coutprocedure').val())+parseInt($('#bz_modelbundle_affaire_couthonoraire').val()));
+ });
+    $('#bz_modelbundle_affaire_coutprocedure').keyup(function() {
+      $('#montantaffaire').val(parseInt($('#bz_modelbundle_affaire_coutouverture').val())+parseInt($('#bz_modelbundle_affaire_coutprocedure').val())+parseInt($('#bz_modelbundle_affaire_couthonoraire').val()));
+  });
+  //-------------------------
+    $('#bz_modelbundle_affaire_couthonoraire').keypress(function() {
+     $('#montantaffaire').val(parseInt($('#bz_modelbundle_affaire_coutouverture').val())+parseInt($('#bz_modelbundle_affaire_coutprocedure').val())+parseInt($('#bz_modelbundle_affaire_couthonoraire').val()));
+ });
+    $('#bz_modelbundle_affaire_couthonoraire').keydown(function() {
+     $('#montantaffaire').val(parseInt($('#bz_modelbundle_affaire_coutouverture').val())+parseInt($('#bz_modelbundle_affaire_coutprocedure').val())+parseInt($('#bz_modelbundle_affaire_couthonoraire').val()));
+ });
+    $('#bz_modelbundle_affaire_couthonoraire').keyup(function() {
+      $('#montantaffaire').val(parseInt($('#bz_modelbundle_affaire_coutouverture').val())+parseInt($('#bz_modelbundle_affaire_coutprocedure').val())+parseInt($('#bz_modelbundle_affaire_couthonoraire').val()));
+  });
+   
+</script>
+    {% endblock javascript %}
+

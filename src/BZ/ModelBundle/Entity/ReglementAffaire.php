@@ -257,7 +257,7 @@ class ReglementAffaire
         $this->montantrestant = $montantrestant;
 
         return $this;
-                    $em = $this->getDoctrine()->getManager();
+               //     $em = $this->getDoctrine()->getManager();
     }
 
     /**
@@ -363,18 +363,17 @@ class ReglementAffaire
     }
     
     /**
-    * @ORM\PrePersist
+    * @ORM\PostPersist
     */
     public function updateDatecreate()
     {
-        
-        $this->getAffaire()->setCoutrestant($this->getAffaire()->getCoutrestant()-$this->getMontantregelement());
        // $this->setMontantrestant($this->getAffaire()->getCoutrestant());
          if($this->getAffaire()->getCoutrestant()-$this->getMontantregelement()<=0){
                        $this->getAffaire()->setEstreglee(true);
                     } else{
                          $this->getAffaire()->setEstreglee(false);
                     }
+          $this->getAffaire()->setCoutrestant($this->getAffaire()->getCoutrestant()-$this->getMontantregelement());
     }
    
     /**

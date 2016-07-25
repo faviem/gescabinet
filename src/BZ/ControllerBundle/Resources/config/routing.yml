@@ -68,7 +68,17 @@ bz_tacheaffaire:
 bz_pieceaudience:
     resource: "@BZControllerBundle/Resources/config/pieceaudience.yml"
     prefix:   /
+bz_objetlitige:
+    resource: "@BZControllerBundle/Resources/config/objetlitige.yml"
+    prefix:   /
+bz_typedepense:
+    resource: "@BZControllerBundle/Resources/config/typedepense.yml"
+    prefix:   /
 
+identitestructure:
+    pattern:    /identitestructure
+    defaults: { _controller: BZControllerBundle:Default:identitestructure}
+    
 notifications:
     pattern:    /notifications
     defaults: { _controller: BZControllerBundle:Default:notifications}

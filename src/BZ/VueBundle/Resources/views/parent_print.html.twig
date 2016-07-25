@@ -1,12 +1,17 @@
 <page backtop="10mm" backbottom="10mm"  {% block marge %} backleft="10mm" backright="10mm" {% endblock marge %} >
     <page_header>
-        <table style="width: 100%; border: solid 1.5px;border-color: rgb(34, 170, 34) rgb(34, 170, 34);border-radius: 3mm;">
+        <table style="width: 100%; ">
             <tr>
                 <td style="text-align: right;    width: 1%"></td>
                 <td style="width: 3%">       
-                     <img src="./assets/icons/plainte.jpg" alt="Archives"  style="height: 1.5%;width: 100%;" >      
+                     <img src="{% if identite.photopersonnel is not null %} {{ asset(identite.photopersonnel.webPath) }} {% else %} {{ asset('uploads/PhotoPersonnel/user.jpg') }} {% endif %}"  style="height: 1.5%;width: 100%;" >      
                  </td>
-                <td style="text-align: center; width: 15%;font-size: 9px;">GERUSOFT  Version 1.0</td>
+                <td style="text-align: center; width: 15%;font-size: 9px;">
+                    {{ identite.nomcabinet }} <br/> 
+                    {{ identite.raisonsociale }} <br/> 
+                    Tél : {{ identite.telcabinet }} / e@mail : {{ identite.emailcabinet }}  <br/> 
+                    {{ identite.immatcabinet }} 
+                </td>
                  <td style="text-align: right;    width: 1%"></td>
                 
                 <td style="text-align: center;width: 50%;font-weight: bold;font-size: 12px;"> {% block title %} {% endblock title %}</td>
@@ -18,7 +23,7 @@
     <page_footer>
         <table style="width: 100%; border: solid 1px black;">
             <tr>
-                <td style="text-align: left; width: 50%;font-size: 10px;">Copyright 2015</td>
+                <td style="text-align: left; width: 50%;font-size: 10px;">Copyright 2016</td>
                 <td style="text-align: right;    width: 50%;font-size: 10px;">page [[page_cu]]/[[page_nb]]</td>
             </tr>
         </table>

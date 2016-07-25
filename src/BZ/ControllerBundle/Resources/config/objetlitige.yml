@@ -1,0 +1,20 @@
+create_objetlitige:
+    pattern:    /create_objetlitige
+    defaults: { _controller: BZControllerBundle:ObjetLitige:create_objetlitige }
+    
+read_objetlitige:
+    pattern:    /read_objetlitige
+    defaults: { _controller: BZControllerBundle:ObjetLitige:read_objetlitige }  
+    
+update_objetlitige:
+    pattern:    /update_objetlitige/{id}
+    defaults: { _controller: BZControllerBundle:ObjetLitige:update_objetlitige }
+    requirements:
+        id: \d+
+    
+delete_objetlitige:
+    pattern:    /delete_objetlitige/{id}
+    defaults: { _controller: BZControllerBundle:ObjetLitige:delete_objetlitige }
+    requirements:
+        id: \d+
+        

@@ -5,10 +5,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use BZ\ModelBundle\Entity\Affaire;
+use BZ\ModelBundle\Entity\ReglementAffaire;
 use BZ\ModelBundle\Entity\TacheAffaire;
 use BZ\ModelBundle\Entity\ClientPhysique;
 use BZ\ModelBundle\Entity\AdversairePhysique;
 use BZ\ModelBundle\Form\ClientPhysiqueType;
+use BZ\ModelBundle\Form\ReglementAffaireComptantType;
 use BZ\ModelBundle\Form\TacheAffaireType;
 use BZ\ModelBundle\Form\AdversairePhysiqueType;
 use BZ\ModelBundle\Form\AffaireType;
@@ -38,12 +40,20 @@ class AffaireController extends Controller
             $adversaire->setEstdelete(false);
             $formadversaire= $this->createForm(new AdversairePhysiqueType(), $adversaire); 
             
+            $reglement = new ReglementAffaire;
+            $reglement->setEstdelete(false);
+            $reglement->setLoginpersist($this->getUser()->getUsername());
+            $reglement->setDatepersist(new \ Datetime());
+             $formreglement= $this->createForm(new ReglementAffaireComptantType(), $reglement); 
+            
             $request = $this->get('request');
             if ($request->getMethod() == 'POST') 
             {
                 $formclient->bind($request);
                 
                 $formadversaire->bind($request);
+                
+                $formreglement->bind($request);
               
                 $formaffaire->bind($request);
                 if ($formaffaire->isValid()) {
@@ -52,11 +62,15 @@ class AffaireController extends Controller
                     $affaire->setAdversairephysique($adversaire);
                     $em->persist($affaire);
                     $em->flush();
+                    $reglement->setExercice($affaire->getExercice());
+                    $reglement->setAffaire($affaire);
+                    $em->persist($reglement);
+                    $em->flush();
                     return $this->redirect( $this->generateUrl('ajouter_pieceaffaire', Array('id'=>$affaire->getId())));
                 }
             }
              return $this->render('BZVueBundle:Affaire:create_affaire.html.twig', 
-                     array('menu_num' => 1, 'formaffaire'   => $formaffaire->createView(), 'formadverse'   => $formadversaire->createView(), 'formclient'   => $formclient->createView()));             
+                     array('menu_num' => 1, 'formreglement'   => $formreglement->createView(), 'formaffaire'   => $formaffaire->createView(), 'formadverse'   => $formadversaire->createView(), 'formclient'   => $formclient->createView()));             
     }
     
     public function read_nouveauaffaireAction()

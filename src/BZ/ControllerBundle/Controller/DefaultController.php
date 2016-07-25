@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use BZ\ModelBundle\Entity\DiscussionReunion;
+use BZ\ModelBundle\Entity\IdentiteStructure;
+use BZ\ModelBundle\Form\IdentiteStructureType;
 
 class DefaultController extends Controller
 {
@@ -99,6 +101,27 @@ class DefaultController extends Controller
           $response = new Response(json_encode(array('rep' => 'ok')));
                 $response->headers->set('Content-Type', 'application/json');
                 return    $response;
+    }
+    
+   public function identitestructureAction()
+    {
+            $identitestructure= $this->getDoctrine()
+                                      ->getManager()->getRepository('BZModelBundle:IdentiteStructure')
+                                      ->find(1);
+            $form = $this->createForm(new IdentiteStructureType(), $identitestructure); 
+            $request = $this->get('request');
+            if ($request->getMethod() == 'POST') 
+            {
+                $form->bind($request);
+                if ($form->isValid()) {
+                    $em = $this->getDoctrine()->getManager();
+                    $identitestructure->setLoginpersist($this->getUser()->getUsername());
+                    $identitestructure->setDatepersist(new \ Datetime());
+                    $em->flush();
+                }
+            }
+             return $this->render('BZVueBundle::identitestructure.html.twig', 
+                     array('menu_num' => 1, 'form'   => $form->createView()));             
     }
     
 }

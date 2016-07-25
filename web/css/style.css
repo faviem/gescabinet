@@ -13,7 +13,7 @@ html, body{
   	font-family: 'Cabin', sans-serif;
     font-size: 100%;
   	overflow-x: hidden;
-	background: #f9f9f9;
+	background: #efb480;
 }
 body a{
 	transition:0.5s all;
@@ -1837,7 +1837,7 @@ ul.dropdown-menu.drp-mnu li a i {
 }
 .main-content {
     margin-left: 200px;
-    background:#F8F8F8;
+    background: #efb480;
     min-height: 1000px;
 }
 .main-content2{

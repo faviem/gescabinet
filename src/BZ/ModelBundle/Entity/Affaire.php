@@ -64,6 +64,11 @@ class Affaire
     * @ORM\JoinColumn(nullable=true) 
     */
     private $qualiteaffaire;
+    /**
+    * @ORM\ManyToOne(targetEntity="BZ\ModelBundle\Entity\ObjetLitige")
+    * @ORM\JoinColumn(nullable=true) 
+    */
+    private $objetlitige;
     
    /**
      * @var integer
@@ -89,6 +94,27 @@ class Affaire
      * 
      */
     private $coutrestant;
+    /**
+     * @var integer
+     * 
+     *  @ORM\Column(name="coutprocedure", type="integer", nullable=true)
+     * 
+     */
+    private $coutouverture;
+    /**
+     * @var integer
+     * 
+     *  @ORM\Column(name="coutouverture", type="integer", nullable=true)
+     * 
+     */
+    private $coutprocedure;
+    /**
+     * @var integer
+     * 
+     *  @ORM\Column(name="couthonoraire", type="integer", nullable=true)
+     * 
+     */
+    private $couthonoraire;
     
     /**
      * @var \Date
@@ -114,18 +140,17 @@ class Affaire
     /**
      * @var string
      * 
-     *  @ORM\Column(name="objet", type="string", length=255, nullable=true)
-     * 
-     */
-    private $objet;
-    
-    /**
-     * @var string
-     * 
      *  @ORM\Column(name="numeroaffaire", type="string", length=80, nullable=true)
      * 
      */
     private $numeroaffaire;
+    /**
+     * @var string
+     * 
+     *  @ORM\Column(name="numerodossier", type="string", length=80, nullable=true)
+     * 
+     */
+    private $numerodosier;
     
     /**
      * @var string
@@ -340,29 +365,6 @@ class Affaire
     public function getDateaffaire()
     {
         return $this->dateaffaire;
-    }
-
-    /**
-     * Set objet
-     *
-     * @param string $objet
-     * @return Affaire
-     */
-    public function setObjet($objet)
-    {
-        $this->objet = $objet;
-
-        return $this;
-    }
-
-    /**
-     * Get objet
-     *
-     * @return string 
-     */
-    public function getObjet()
-    {
-        return $this->objet;
     }
 
     /**
@@ -808,10 +810,11 @@ class Affaire
     }
     
      /**
-    * @ORM\PrePersist
+    * @ORM\PostPersist
     */
     public function updateDatecreate()
     {
+        $this->setCoutaffaire($this->getCoutouverture()+$this->getCoutprocedure()+$this->getCouthonoraire());
         $this->setCoutrestant($this->getCoutaffaire());
     }
     
@@ -882,4 +885,120 @@ class Affaire
     }
     
     
+
+    /**
+     * Set numerodosier
+     *
+     * @param string $numerodosier
+     * @return Affaire
+     */
+    public function setNumerodosier($numerodosier)
+    {
+        $this->numerodosier = $numerodosier;
+
+        return $this;
+    }
+
+    /**
+     * Get numerodosier
+     *
+     * @return string 
+     */
+    public function getNumerodosier()
+    {
+        return $this->numerodosier;
+    }
+
+    /**
+     * Set coutouverture
+     *
+     * @param integer $coutouverture
+     * @return Affaire
+     */
+    public function setCoutouverture($coutouverture)
+    {
+        $this->coutouverture = $coutouverture;
+
+        return $this;
+    }
+
+    /**
+     * Get coutouverture
+     *
+     * @return integer 
+     */
+    public function getCoutouverture()
+    {
+        return $this->coutouverture;
+    }
+
+    /**
+     * Set coutprocedure
+     *
+     * @param integer $coutprocedure
+     * @return Affaire
+     */
+    public function setCoutprocedure($coutprocedure)
+    {
+        $this->coutprocedure = $coutprocedure;
+
+        return $this;
+    }
+
+    /**
+     * Get coutprocedure
+     *
+     * @return integer 
+     */
+    public function getCoutprocedure()
+    {
+        return $this->coutprocedure;
+    }
+
+    /**
+     * Set couthonoraire
+     *
+     * @param integer $couthonoraire
+     * @return Affaire
+     */
+    public function setCouthonoraire($couthonoraire)
+    {
+        $this->couthonoraire = $couthonoraire;
+
+        return $this;
+    }
+
+    /**
+     * Get couthonoraire
+     *
+     * @return integer 
+     */
+    public function getCouthonoraire()
+    {
+        return $this->couthonoraire;
+    }
+       
+
+    /**
+     * Set objetlitige
+     *
+     * @param \BZ\ModelBundle\Entity\ObjetLitige $objetlitige
+     * @return Affaire
+     */
+    public function setObjetlitige(\BZ\ModelBundle\Entity\ObjetLitige $objetlitige = null)
+    {
+        $this->objetlitige = $objetlitige;
+
+        return $this;
+    }
+
+    /**
+     * Get objetlitige
+     *
+     * @return \BZ\ModelBundle\Entity\ObjetLitige 
+     */
+    public function getObjetlitige()
+    {
+        return $this->objetlitige;
+    }
 }

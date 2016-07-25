@@ -1,0 +1,20 @@
+create_typedepense:
+    pattern:    /create_typedepense
+    defaults: { _controller: BZControllerBundle:TypeDepense:create_typedepense }
+    
+read_typedepense:
+    pattern:    /read_typedepense
+    defaults: { _controller: BZControllerBundle:TypeDepense:read_typedepense }  
+    
+update_typedepense:
+    pattern:    /update_typedepense/{id}
+    defaults: { _controller: BZControllerBundle:TypeDepense:update_typedepense }
+    requirements:
+        id: \d+
+    
+delete_typedepense:
+    pattern:    /delete_typedepense/{id}
+    defaults: { _controller: BZControllerBundle:TypeDepense:delete_typedepense }
+    requirements:
+        id: \d+
+        

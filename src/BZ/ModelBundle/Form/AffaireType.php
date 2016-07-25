@@ -72,18 +72,46 @@ class AffaireType extends AbstractType
                     'attr' => array('class' => 'date form-control '),
                 ))
           ->add('numeroaffaire', 'text', array(
-                    'label' => 'N° de l\'affaire (*)',
+                    'label' => 'N° de procédure (*)',
                    'required' => true,
                      'attr' =>array(
                     'class' =>'form-control'
                       )))
-          ->add('objet', 'textarea', array(
-                    'label' => 'Objet du litige',
+          ->add('numerodosier', 'text', array(
+                    'label' => 'N° du dossier (*)',
+                   'required' => true,
                      'attr' =>array(
                     'class' =>'form-control'
                       )))
-          ->add('coutaffaire', 'number', array(
-                    'label' => 'Coût total à charge du client (francs CFA)',
+//          ->add('objet', 'textarea', array(
+//                    'label' => 'Objet du litige',
+//                     'attr' =>array(
+//                    'class' =>'form-control'
+//                      )))
+         ->add('objetlitige','entity', array('label' => 'Objet du litige', 
+                'class' => 'BZModelBundle:ObjetLitige',
+                'property' => 'libelle',
+                'empty_value' => '',
+                'multiple' => false,
+                'attr' =>array('class' =>'form-control chzn-select'),
+                'required' => true,
+                'query_builder' => function(EntityRepository $er )  {
+                                return $er->createQueryBuilder('o')
+                                          ->orderBy('o.libelle', 'ASC')
+                                          ->where('o.estdelete = 0');
+                        }))
+          ->add('coutouverture', 'number', array(
+                    'label' => 'Frais d\'ouverture (francs CFA)',
+                     'attr' =>array(
+                    'class' =>'form-control'
+                      )))
+          ->add('coutprocedure', 'number', array(
+                    'label' => 'Frais de procédure (francs CFA)',
+                     'attr' =>array(
+                    'class' =>'form-control'
+                      )))
+          ->add('couthonoraire', 'number', array(
+                    'label' => 'Honoraires (francs CFA)',
                      'attr' =>array(
                     'class' =>'form-control'
                       )))
