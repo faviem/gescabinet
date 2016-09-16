@@ -2,6 +2,10 @@
 page_accueil:
     path:     /
     defaults: { _controller: "BZControllerBundle:Default:index" }
+    
+page_vide:
+    path:     /page_vide
+    defaults: { _controller: "BZControllerBundle:Default:page_vide" }
 
     
 #routes authentifiées

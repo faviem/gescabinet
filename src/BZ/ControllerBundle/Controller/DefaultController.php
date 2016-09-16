@@ -129,4 +129,9 @@ class DefaultController extends Controller
                      array('menu_num' => 1, 'form'   => $form->createView()));             
     }
     
+   public function page_videAction()
+    {
+          return $this->render('::apropos.html.twig');             
+    }
+    
 }
