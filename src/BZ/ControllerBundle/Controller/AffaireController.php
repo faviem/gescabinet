@@ -24,6 +24,7 @@ class AffaireController extends Controller
             $affaire->setEstarchivee(false);
             $affaire->setEstentraitement(false);
             $affaire->setEstnouveau(true);
+            $affaire->setEstreglee(false);
             $affaire->setLoginpersist($this->getUser()->getUsername());
             $affaire->setDatepersist(new \ Datetime());
             $formaffaire = $this->createForm(new AffaireType(), $affaire); 

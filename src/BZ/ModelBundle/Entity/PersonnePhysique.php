@@ -15,12 +15,6 @@ abstract  class PersonnePhysique
     * @ORM\JoinColumn(nullable=true) 
     */
    protected $ville;
-   
-    /**
-    * @ORM\ManyToOne(targetEntity="BZ\ModelBundle\Entity\Pays")
-    * @ORM\JoinColumn(nullable=true) 
-    */
-   protected $pays;
     
     protected $id;
    

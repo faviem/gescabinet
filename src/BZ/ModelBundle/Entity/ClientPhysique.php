@@ -203,27 +203,4 @@ class ClientPhysique extends PersonnePhysique
     {
         return $this->ville;
     }
-
-    /**
-     * Set pays
-     *
-     * @param \BZ\ModelBundle\Entity\Pays $pays
-     * @return ClientPhysique
-     */
-    public function setPays(\BZ\ModelBundle\Entity\Pays $pays = null)
-    {
-        $this->pays = $pays;
-
-        return $this;
-    }
-
-    /**
-     * Get pays
-     *
-     * @return \BZ\ModelBundle\Entity\Pays 
-     */
-    public function getPays()
-    {
-        return $this->pays;
-    }
 }

@@ -44,8 +44,12 @@
            
         </div>
         <div class="panel-footer">
-                 <a type="button" class="btn btn-default btn-xm " href="#" id="retour" onclick="location.reload();" style="font-size: 11px;"><i class="fa fa-arrow-left"> </i> Retour</a>
-          </div>
+          <a type="button" class="btn btn-default btn-xm " href="#" id="retour"  style="font-size: 11px;" onclick=" $.ajax({type: 'GET', url: '{{ path('page_vide') }}', cache: false, success: function (data) {
+                                        $('#afficheformulaire').html(data);
+                                    }, error: function () {
+                                        alert('requête échouée');
+                                    }});"><i class="fa fa-arrow-left"> </i> Retour</a>
+        </div>
     </div>
 </div>
      

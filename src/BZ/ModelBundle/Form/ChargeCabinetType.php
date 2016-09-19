@@ -40,6 +40,18 @@ class ChargeCabinetType extends AbstractType {
                     'attr' => array(
                         'class' => 'form-control'
             )))
+                          ->add('modereglement', 'entity', array('label' => 'Mode de paiement',
+                    'class' => 'BZModelBundle:ModeReglement',
+                    'property' => 'libelle',
+                    'empty_value' => '',
+                    'multiple' => false,
+                    'attr' => array('class' => 'form-control chzn-select'),
+                    'required' => true,
+                    'query_builder' => function(EntityRepository $er ) {
+                return $er->createQueryBuilder('m')
+                        ->orderBy('m.libelle', 'ASC')
+                        ->where('m.estdelete = 0');
+            }))
            ->add('piececharge', new PhotoPersonnelType(),array('label' => 'Pièce Jointe', 'required' => false))
         ;
     }

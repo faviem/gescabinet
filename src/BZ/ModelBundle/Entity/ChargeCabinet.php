@@ -22,6 +22,11 @@ class ChargeCabinet
      */
     private $id;
 
+    /**
+    * @ORM\ManyToOne(targetEntity="BZ\ModelBundle\Entity\ModeReglement")
+    * @ORM\JoinColumn(nullable=true) 
+    */
+    private $modereglement;
    /**
     * @ORM\ManyToOne(targetEntity="BZ\ModelBundle\Entity\RubriqueCharge", inversedBy="chargecabinets")
     * @ORM\JoinColumn(nullable=true) 
@@ -382,5 +387,28 @@ class ChargeCabinet
     public function getPiececharge()
     {
         return $this->piececharge;
+    }
+    
+        /**
+     * Set modereglement
+     *
+     * @param \BZ\ModelBundle\Entity\ModeReglement $modereglement
+     * @return ChargeCabinet
+     */
+    public function setModereglement(\BZ\ModelBundle\Entity\ModeReglement $modereglement = null)
+    {
+        $this->modereglement = $modereglement;
+
+        return $this;
+    }
+
+    /**
+     * Get modereglement
+     *
+     * @return \BZ\ModelBundle\Entity\ModeReglement 
+     */
+    public function getModereglement()
+    {
+        return $this->modereglement;
     }
 }

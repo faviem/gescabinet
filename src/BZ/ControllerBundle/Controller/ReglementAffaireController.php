@@ -11,12 +11,13 @@ class ReglementAffaireController extends Controller
 {
     public function create_reglementaffaireAction($id, $exercice)
     {
+            $affaire=$this->getDoctrine()->getManager()->getRepository('BZModelBundle:Affaire')->find($id);
             $reglementaffaire= new ReglementAffaire;
             $reglementaffaire->setEstdelete(false);
             $reglementaffaire->setLoginpersist($this->getUser()->getUsername());
             $reglementaffaire->setDatepersist(new \ Datetime());
             $reglementaffaire->setExercice($this->getDoctrine()->getManager()->getRepository('BZModelBundle:Exercice')->find($exercice));
-            $reglementaffaire->setAffaire($this->getDoctrine()->getManager()->getRepository('BZModelBundle:Affaire')->find($id));
+            $reglementaffaire->setAffaire($affaire);
             $form = $this->createForm(new ReglementAffaireType(), $reglementaffaire); 
             $request = $this->get('request');
             if ($request->getMethod() == 'POST') 
@@ -26,12 +27,12 @@ class ReglementAffaireController extends Controller
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($reglementaffaire);
                     $em->flush();
-                     if($this->getAffaire()->getCoutrestant()-$this->getMontantregelement()<=0){
-                       $this->getAffaire()->setEstreglee(true);
+                     if($affaire->getCoutrestant()-$reglementaffaire->getMontantregelement()<=0){
+                       $affaire->setEstreglee(true);
                     } else{
-                         $this->getAffaire()->setEstreglee(false);
+                         $affaire->setEstreglee(false);
                     }
-                   $this->getAffaire()->setCoutrestant($this->getAffaire()->getCoutrestant()-$this->getMontantregelement());
+                   $affaire->setCoutrestant($affaire->getCoutrestant()-$reglementaffaire->getMontantregelement());
                    $em->flush();
                    }
              return $this->redirect( $this->generateUrl('read_reglementaffaire', Array('exercice'=>$exercice, 'choix' => 2)));

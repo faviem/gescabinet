@@ -123,7 +123,7 @@
            }
            else
            {
-              var url='{{ path("read_previsioncharge",{'exercice':  'exercice'}) }}';
+              var url='{{ path("read_suivibudget",{'exercice':  'exercice'}) }}';
               url=url.replace("exercice", $(this).val()==="" ? 0 : $(this).val());
               location.href=""+url+"";
            }

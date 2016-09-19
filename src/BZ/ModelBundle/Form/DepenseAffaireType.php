@@ -23,7 +23,7 @@ class DepenseAffaireType extends AbstractType {
                     'format' => 'dd/MM/yyyy',
                     'attr' => array('class' => 'date form-control '),
                 ))
-                ->add('modereglement', 'entity', array('label' => 'Mode de dépense',
+                ->add('modereglement', 'entity', array('label' => 'Mode de paiement',
                     'class' => 'BZModelBundle:ModeReglement',
                     'property' => 'libelle',
                     'empty_value' => '',

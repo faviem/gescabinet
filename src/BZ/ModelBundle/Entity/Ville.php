@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 */
 class Ville
 {
+      /**
+    * @ORM\ManyToOne(targetEntity="BZ\ModelBundle\Entity\Pays")
+    * @ORM\JoinColumn(nullable=true) 
+    */
+   protected $pays;
    /**
      * @var integer
      *
@@ -208,5 +213,36 @@ class Ville
     public function getEstdelete()
     {
         return $this->estdelete;
+    }
+    
+     /**
+     * Set pays
+     *
+     * @param \BZ\ModelBundle\Entity\Pays $pays
+     * @return Ville
+     */
+    public function setPays(\BZ\ModelBundle\Entity\Pays $pays = null)
+    {
+        $this->pays = $pays;
+
+        return $this;
+    }
+
+    /**
+     * Get pays
+     *
+     * @return \BZ\ModelBundle\Entity\Pays 
+     */
+    public function getPays()
+    {
+        return $this->pays;
+    }
+    
+    public function getVillePays()
+    {
+        return $this->getPays()->getLibelle().' - '.$this->getNomville();
+    }
+    public function getParentName() { 
+    return $this->getPays() ? $this->getPays()->getLibelle() : null;         
     }
 }

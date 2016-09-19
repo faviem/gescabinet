@@ -12,8 +12,12 @@
            
         </div>
         <div class="panel-footer">
-                 <a type="button" class="btn btn-default btn-xm " href="#" id="retour" onclick="location.reload();" style="font-size: 11px;"><i class="fa fa-arrow-left"> </i> Retour</a>
-          <button type="submit" class="btn btn-default btn-xm " style="font-size: 11px;background: purple;color: white;"> <i class="fa fa-download"> </i> Archiver</button>
+           <a type="button" class="btn btn-default btn-xm " href="#" id="retour"  style="font-size: 11px;" onclick=" $.ajax({type: 'GET', url: '{{ path('page_vide') }}', cache: false, success: function (data) {
+                                        $('#afficheformulaire').html(data);
+                                    }, error: function () {
+                                        alert('requête échouée');
+                                    }});"><i class="fa fa-arrow-left"> </i> Retour</a>
+            <button type="submit" class="btn btn-default btn-xm " style="font-size: 11px;background: purple;color: white;"> <i class="fa fa-download"> </i> Archiver</button>
                   <span class='tachat_img hide'><img src="{{ asset('/images/712.GIF') }}" alt="Second slide" class='img-circle' style="height: 20px;width: 20px;"> Archivation en cours ...</span>
         </div>
     </div>

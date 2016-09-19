@@ -827,7 +827,7 @@ class Affaire
     public function updateDatecreate()
     {
         $this->setCoutaffaire($this->getCoutouverture()+$this->getCoutprocedure()+$this->getCouthonoraire());
-        $this->setCoutrestant($this->getCoutaffaire());
+        $this->setCoutrestant($this->getCoutouverture()+$this->getCoutprocedure()+$this->getCouthonoraire());
     }
     
     /**

@@ -25,6 +25,7 @@ class ChargeCabinetController extends Controller
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($chargecabinet);
                     $em->flush();
+                    return $this->redirect( $this->generateUrl('read_chargecabinet', Array( 'exercice' => $exercice)));
                 }
             }
              return $this->render('BZVueBundle:ChargeCabinet:create_chargecabinet.html.twig', 

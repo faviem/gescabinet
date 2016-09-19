@@ -34,6 +34,9 @@
                                         Montant opération
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="font-size: 13px;text-align: center;">
+                                        Mode
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="font-size: 13px;text-align: center;">
                                         PJ
                                     </th>
                                 </tr>
@@ -51,6 +54,7 @@
                                         <td class="" style="font-size: 12px;">{{  element.datecharge|date('d/m/Y') }} </td>
                                         <td class="" style="font-size: 12px;">{{  element.rubriquecharge.designation}} </td>
                                         <td class="" style="font-size: 12px;text-align: right;">{{  element.montantcharge }} </td>
+                                        <td class="" style="font-size: 12px;">  {%  if element.modereglement is not null %} {{  element.modereglement.libelle }} {% endif  %} </td>
                                         {% set cout = cout+ element.montantcharge %}
                                          <td class="" style="font-size: 12px;text-align: center;">
                                             <div class="dropdown">

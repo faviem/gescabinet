@@ -41,22 +41,12 @@ class ClientPhysiqueType extends AbstractType
                      'attr' =>array(
                     'class' =>'form-control'
                       )))
-            ->add('pays','entity', array('label' => 'Pays de province (*)', 
-                'class' => 'BZModelBundle:Pays',
-                'property' => 'libelle',
-                'empty_value' => '',
-                'multiple' => false,
-                'attr' =>array('class' =>'form-control'),
-                'required' => true,
-                'query_builder' => function(EntityRepository $er )  {
-                                return $er->createQueryBuilder('p')
-                                          ->orderBy('p.libelle', 'ASC')
-                                          ->where('p.estdelete = 0');
-                        }))
+         
             ->add('ville','entity', array('label' => 'Ville de résidence (*)', 
                 'class' => 'BZModelBundle:Ville',
                 'property' => 'nomville',
                 'empty_value' => '',
+                  'group_by' => 'parentName',
                 'multiple' => false,
                 'attr' =>array('class' =>'form-control'),
                 'required' => true,

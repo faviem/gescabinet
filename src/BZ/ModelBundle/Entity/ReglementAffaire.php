@@ -361,20 +361,6 @@ class ReglementAffaire
     {
         return $this->affaire;
     }
-    
-    /**
-    * @ORM\PostPersist
-    */
-    public function updateDatecreate()
-    {
-       // $this->setMontantrestant($this->getAffaire()->getCoutrestant());
-         if($this->getAffaire()->getCoutrestant()-$this->getMontantregelement()<=0){
-                       $this->getAffaire()->setEstreglee(true);
-                    } else{
-                         $this->getAffaire()->setEstreglee(false);
-                    }
-          $this->getAffaire()->setCoutrestant($this->getAffaire()->getCoutrestant()-$this->getMontantregelement());
-    }
    
     /**
      * Set piecereglement

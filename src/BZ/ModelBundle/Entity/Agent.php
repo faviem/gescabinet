@@ -252,8 +252,8 @@ class Agent extends PersonnePhysique
 
         return $this;
     }
-
-    /**
+    
+       /**
      * Get ville
      *
      * @return \BZ\ModelBundle\Entity\Ville 
@@ -261,29 +261,6 @@ class Agent extends PersonnePhysique
     public function getVille()
     {
         return $this->ville;
-    }
-
-    /**
-     * Set pays
-     *
-     * @param \BZ\ModelBundle\Entity\Pays $pays
-     * @return Agent
-     */
-    public function setPays(\BZ\ModelBundle\Entity\Pays $pays = null)
-    {
-        $this->pays = $pays;
-
-        return $this;
-    }
-
-    /**
-     * Get pays
-     *
-     * @return \BZ\ModelBundle\Entity\Pays 
-     */
-    public function getPays()
-    {
-        return $this->pays;
     }
     
      /**

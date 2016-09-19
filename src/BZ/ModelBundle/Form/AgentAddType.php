@@ -53,6 +53,7 @@ class AgentAddType extends AbstractType
                 'class' => 'BZModelBundle:Ville',
                 'property' => 'nomville',
                 'empty_value' => '',
+                  'group_by' => 'parentName',
                 'multiple' => false,
                 'attr' =>array('class' =>'form-control chzn-select'),
                 'required' => true,
